@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:2:1-32:12
-INJECTED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:2:1-32:12
-INJECTED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:2:1-32:12
-INJECTED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:2:1-32:12
+ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:2:1-33:12
+INJECTED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:2:1-33:12
+INJECTED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:2:1-33:12
+INJECTED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:2:1-33:12
 MERGED from [com.google.android.material:material:1.12.0] /Users/macos/.gradle/caches/transforms-3/9d73e5175fda6b95404d11c94db3758c/transformed/material-1.12.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/macos/.gradle/caches/transforms-3/823a6f06860af3fb8bfdf75a73fca384/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.0] /Users/macos/.gradle/caches/transforms-3/2c42d2f931ae1a692f3f12423f7e390c/transformed/appcompat-resources-1.7.0/AndroidManifest.xml:2:1-7:12
@@ -56,8 +56,8 @@ MERGED from [androidx.print:print:1.0.0] /Users/macos/.gradle/caches/transforms-
 	xmlns:android
 		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:2:11-69
 application
-ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:5:5-30:19
-INJECTED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:5:5-30:19
+ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:5:5-31:19
+INJECTED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:5:5-31:19
 MERGED from [com.google.android.material:material:1.12.0] /Users/macos/.gradle/caches/transforms-3/9d73e5175fda6b95404d11c94db3758c/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] /Users/macos/.gradle/caches/transforms-3/9d73e5175fda6b95404d11c94db3758c/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/macos/.gradle/caches/transforms-3/823a6f06860af3fb8bfdf75a73fca384/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -97,33 +97,33 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/macos/.gradle/caches
 	android:dataExtractionRules
 		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:7:13-69
 activity#com.example.demoandroid.TextInputActivity
-ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:15:9-17:43
+ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:15:9-18:43
 	android:exported
-		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:17:17-41
+		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:18:17-41
 	android:name
-		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:16:17-50
+		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:17:17-50
 activity#com.example.demoandroid.MainActivity
-ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:18:9-20:43
+ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:19:9-21:43
 	android:exported
-		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:20:17-41
+		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:21:17-41
 	android:name
-		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:19:17-45
+		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:20:17-45
 activity#com.example.demoandroid.TextViewActivity
-ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:21:9-29:20
+ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:22:9-30:20
 	android:exported
-		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:23:17-40
+		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:24:17-40
 	android:name
-		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:22:17-49
+		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:23:17-49
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:24:13-28:29
+ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:25:13-29:29
 action#android.intent.action.MAIN
-ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:25:17-68
+ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:26:17-68
 	android:name
-		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:25:25-66
+		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:26:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:27:17-76
+ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:28:17-76
 	android:name
-		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:27:27-74
+		ADDED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:28:27-74
 uses-sdk
 INJECTED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml

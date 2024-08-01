@@ -13,9 +13,10 @@
             android:theme="@style/Theme.DemoAndroid"
             tools:targetApi="31">
         <activity
+
                 android:name=".TextInputActivity"
                 android:exported="false"/>
-        <activity
+        <activityit
                 android:name=".MainActivity"
                 android:exported="false"/>
         <activity

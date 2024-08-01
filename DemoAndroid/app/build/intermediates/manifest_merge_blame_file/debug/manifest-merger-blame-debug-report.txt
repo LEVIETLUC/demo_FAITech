@@ -20,7 +20,7 @@
 15-->[androidx.core:core:1.13.1] /Users/macos/.gradle/caches/transforms-3/e1efbeb9ab94b7a0e7b7e60ee5d7425d/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
 16
 17    <application
-17-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:5:5-30:19
+17-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:5:5-31:19
 18        android:allowBackup="true"
 18-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:6:13-39
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -43,32 +43,32 @@
 29        android:theme="@style/Theme.DemoAndroid" >
 29-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:13:13-53
 30        <activity
-30-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:15:9-17:43
+30-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:15:9-18:43
 31            android:name="com.example.demoandroid.TextInputActivity"
-31-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:16:17-50
+31-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:17:17-50
 32            android:exported="false" />
-32-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:17:17-41
+32-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:18:17-41
 33        <activity
-33-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:18:9-20:43
+33-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:19:9-21:43
 34            android:name="com.example.demoandroid.MainActivity"
-34-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:19:17-45
+34-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:20:17-45
 35            android:exported="false" />
-35-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:20:17-41
+35-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:21:17-41
 36        <activity
-36-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:21:9-29:20
+36-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:22:9-30:20
 37            android:name="com.example.demoandroid.TextViewActivity"
-37-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:22:17-49
+37-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:23:17-49
 38            android:exported="true" >
-38-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:23:17-40
+38-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:24:17-40
 39            <intent-filter>
-39-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:24:13-28:29
+39-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:25:13-29:29
 40                <action android:name="android.intent.action.MAIN" />
-40-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:25:17-68
-40-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:25:25-66
+40-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:26:17-68
+40-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:26:25-66
 41
 42                <category android:name="android.intent.category.LAUNCHER" />
-42-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:27:17-76
-42-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:27:27-74
+42-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:28:17-76
+42-->/Users/macos/IdeaProjects/demo_fai/demo_FAITech/DemoAndroid/app/src/main/AndroidManifest.xml:28:27-74
 43            </intent-filter>
 44        </activity>
 45
