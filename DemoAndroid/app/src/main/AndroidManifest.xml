@@ -21,6 +21,13 @@
                 android:exported="false"/>
         <activity
                 android:name=".TextViewActivity"
+                android:exported="false"/>
+
+        <activity
+                android:name=".TextInputComponent"
+                android:exported="false"/>
+        <activity
+                android:name=".TextViewComponent"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
