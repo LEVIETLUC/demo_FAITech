@@ -13,6 +13,11 @@
 | Tài liệu và cộng đồng | Tài liệu nhiều, cộng đồng lớn | Tài liệu ít hân cũng như công đồng chưa lớn |
 
 
+![image](https://github.com/user-attachments/assets/e22945be-dba0-43b6-b995-463c63d6cb91)
+![image](https://github.com/user-attachments/assets/a1dad7d3-2f07-4492-9323-ddf9adda60fa)
+
+
+
 ## Summary cách tạo view từ xml
 LayoutInflate sẽ chuyển xml về tree structure để kotlin/java có thể hiểu được. Mỗi phần tử XML trở thành một đối tượng trong cây cấu trúc này, thông qua các bước sau:
 1. Lấy LayoutInflater từ ngữ cảnh.
