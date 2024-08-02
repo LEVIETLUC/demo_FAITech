@@ -16,7 +16,7 @@
 
                 android:name=".TextInputActivity"
                 android:exported="false"/>
-        <activityit
+        <activity
                 android:name=".MainActivity"
                 android:exported="false"/>
         <activity
