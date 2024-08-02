@@ -26,3 +26,19 @@ LayoutInflate sẽ chuyển xml về tree structure để kotlin/java có thể 
 4. Thêm view vào giao diện người dùng.
 5. Lấy các thành phần con từ view để thực hiện các thao tác khác.
 6. Đóng trình phân tích cú pháp XML sau khi sử dụng.
+
+
+## XML với Component thuần trong kotlin
+### Giống nhau
+1. Đều dùng để xây dựng UI
+2. Tuỳ chỉnh giao diện: đều cho phép tuỳ chỉnh, thay đổi giao diện
+3. kết quả đầu ra: đều tại ra giao diện cuối cùng cho người dùng là như nhau
+4. Cùng Android SDk: đều dùng các thành phần UI có sẵn trong SDK
+
+### khác Nhau
+| So sánh | XML | Component thuần trong kotlin |
+| ------------- | ------------- | ------------- |
+| Cú pháp, cách tiếp cận | Sử dụng XML để định nghĩa cấu trúc giao diện | Sử dụng Kotlin để mô tả các thành phần UI và cách chúng liên kết với nhau |
+| Trực quan hóa UI | Trực quan hơn, có thể dùng kéo thả| Các thành phần định nghĩa hoàn toàn trong Kotlin, khó hình dung hơn nếu không bấm debug |
+| Tính linh hoạt| Tách biệt rõ ràng giữa giao diện và logic ứng dụng nhưng cần thời gian để nạp XML vào | Tích hợp chặt chẽ với logic của ứng dụng, tạo các giao diện động một cách linh hoạt hơn |
+| Hiệu suất| chậm hơn chút vì XML cần tốn thêm thời gian để nạp vào | có thể nhanh hơn một chút vì không cần nạp XML vào |
