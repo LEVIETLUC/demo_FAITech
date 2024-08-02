@@ -42,16 +42,13 @@ class TextInputActivity : AppCompatActivity() {
     private fun isEmptyEditText(editText: EditText) {
         editText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // Không cần thực hiện gì ở đây
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // Kiểm tra xem EditText có dữ liệu không
                 buttonBack.isEnabled = !s.isNullOrEmpty()
             }
 
             override fun afterTextChanged(s: Editable?) {
-                // Không cần thực hiện gì ở đây
             }
         })
     }
