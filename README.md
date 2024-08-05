@@ -48,7 +48,7 @@ LayoutInflate sẽ chuyển xml về tree structure để kotlin/java có thể 
 2. Cần tạo các lớp Adapter để format dữ liệu và ViewHolder để gắn dữ liệu vào các widget đã được ánh xạ tương ứng bằng id.
 <img width="960" alt="Screenshot 2024-08-05 at 14 59 23" src="https://github.com/user-attachments/assets/de01851e-613b-4955-aaad-261ecb46554e">
 
-3. Khỏi tạo RecyclerView trong Activity thiết lập LayoutManager và gán Adapter vào.
+3. Khởi tạo RecyclerView trong Activity thiết lập LayoutManager và gán Adapter vào.
 <img width="761" alt="Screenshot 2024-08-05 at 15 00 27" src="https://github.com/user-attachments/assets/2753934b-db74-4209-85a3-f19a518abec1">
 
 
