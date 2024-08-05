@@ -4,7 +4,10 @@
     <string name="content_text">Hello, my name is....</string>
     <string name="hint_text">Enter your name</string>
     <string name="next_btn">Next</string>
+    <string name="view_btn">View</string>
     <string name="hello_txt">Hello</string>
     <string name="data_text">Data</string>
     <string name="get_text_and_back_btn">Get text and back</string>
+    <string name="image_txt">Image Base Demo</string>
+    <string name="feature_name_txt">Feature Name</string>
 </resources>
