@@ -2,6 +2,7 @@ package com.example.demoandroid.activities
 
 import android.R
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
@@ -50,7 +51,7 @@ class TextViewComponent : AppCompatActivity() {
             isAllCaps = false
             layoutParams = LinearLayout.LayoutParams(
                 convertDpToPx(200),
-                LinearLayout.LayoutParams.WRAP_CONTENT
+                convertDpToPx(40),
             ).apply { topMargin = convertDpToPx(15)
             }
             background = customButton()
@@ -64,14 +65,14 @@ class TextViewComponent : AppCompatActivity() {
         setContentView(linearLayout)
     }
 
-    private fun customButton() : GradientDrawable {
-        val drawable = GradientDrawable().apply{
-            shape = GradientDrawable.RECTANGLE
-            cornerRadius = 50f
-            setColor(getColor(this@TextViewComponent, R.color.holo_purple))
-        }
-        return drawable
+private fun customButton(): GradientDrawable {
+    val drawable = GradientDrawable().apply {
+        shape = GradientDrawable.RECTANGLE
+        cornerRadius = 100f
+        setColor(Color.parseColor("#6454a4"))
     }
+    return drawable
+}
 
     private fun convertDpToPx(dp: Int): Int {
         return (dp * resources.displayMetrics.density).toInt()
