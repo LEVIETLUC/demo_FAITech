@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.demoandroid.R
@@ -17,12 +18,20 @@ class FeatureAdapter(
 ) : RecyclerView.Adapter<FeatureAdapter.FeatureViewHolder>() {
 
     inner class FeatureViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val featureItem: RelativeLayout = itemView.findViewById(R.id.feature_item)
         val featureName: TextView = itemView.findViewById(R.id.feat_name_txt)
         val featureDescription: TextView = itemView.findViewById(R.id.feat_desc_txt)
         private val editButton: ImageButton = itemView.findViewById(R.id.edit_btn)
 
         init {
             editButton.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    listener.onFeatureClick(featureList[position])
+                }
+            }
+
+            featureItem.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     listener.onFeatureClick(featureList[position])
@@ -44,5 +53,4 @@ class FeatureAdapter(
     }
 
     override fun getItemCount() = featureList.size
-
 }
