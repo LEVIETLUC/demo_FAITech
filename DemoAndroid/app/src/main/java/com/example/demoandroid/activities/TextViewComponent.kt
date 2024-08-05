@@ -1,9 +1,8 @@
-package com.example.demoandroid
+package com.example.demoandroid.activities
 
 import android.R
 import android.content.Intent
 import android.graphics.Typeface
-import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.Gravity
@@ -13,7 +12,6 @@ import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getColor
 
 class TextViewComponent : AppCompatActivity() {

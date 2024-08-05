@@ -1,4 +1,4 @@
-package com.example.demoandroid
+package com.example.demoandroid.activities
 
 import android.R
 import android.app.Activity

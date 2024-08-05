@@ -1,4 +1,4 @@
-package com.example.demoandroid
+package com.example.demoandroid.activities
 
 import android.app.Activity
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
+import com.example.demoandroid.R
 
 class TextInputActivity : AppCompatActivity() {
 

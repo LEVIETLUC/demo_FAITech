@@ -1,4 +1,4 @@
-package com.example.demoandroid
+package com.example.demoandroid.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.demoandroid.R
 
 class TextViewActivity : AppCompatActivity() {
 
