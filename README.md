@@ -44,11 +44,46 @@ LayoutInflate sẽ chuyển xml về tree structure để kotlin/java có thể 
 | Hiệu suất| chậm hơn chút vì XML cần tốn thêm thời gian để nạp vào | có thể nhanh hơn một chút vì không cần nạp XML vào |
 
 ## RecyclerView
+### Các bước cơ bản khi sử dụng RecyclerView
 1. Thêm RecyclerView vào Layout XML.
 2. Cần tạo các lớp Adapter để format dữ liệu và ViewHolder để gắn dữ liệu vào các widget đã được ánh xạ tương ứng bằng id.
-<img width="960" alt="Screenshot 2024-08-05 at 14 59 23" src="https://github.com/user-attachments/assets/de01851e-613b-4955-aaad-261ecb46554e">
-
 3. Khởi tạo RecyclerView trong Activity thiết lập LayoutManager và gán Adapter vào.
-<img width="761" alt="Screenshot 2024-08-05 at 15 00 27" src="https://github.com/user-attachments/assets/2753934b-db74-4209-85a3-f19a518abec1">
+
+### Class FeatureAdapter
+- Là một lớp kế thừa từ RecyclerView.Adapter để điểm trung gian format danh sách dữ liệu thành danh sách item
+- Thông báo cho OnFeatureClickListener khi một item nào đó được click
+- Cung cấp các phương thức: onCreateViewHolder, onBindViewHolder, getItemCount để RecyclerView hoạt động.
+### Inner Class FeatureViewHolder
+- Lưu trữ các view: Các biến featureName, featureDescription, editButton tham chiếu đến các view trong layout của một item (ví dụ: TextView, ImageButton).
+- Xử lí sự kiện click của một item hoặt một image button, phương thức onFeatureClick của listener sẽ được gọi.
+### onCreateViewHolder
+- Tạo ra một đối tượng FeatureViewHolder mới cho mỗi dòng dữ liệu cần hiển thị
+- Dùng inflate để tham chiếu tới R.layout.item_feat_option để chuẩn bị gán dữ liệu vào
+### onBindViewHolder
+- Được gọi khi RecyclerView cần gắn dữ liệu vào một view holder.
+- Cập nhật nội dung các view trong view holder
+### getItemCount
+- Trả về tổng số item cần hiển thị trong RecyclerView.
+### LinearLayoutManager
+- Được dùng để sắp xếp cái item trong RecyclerView theo chiều dọc
+### ItemDecoration
+- Được dùng để thêm đường phân cách giữa các item và mỗi divider được them theo chiều dọc của danh sách
+### onFeatureClick 
+- Đây là hàm được gọi khi người dùng click vào item hoặc imageButton, hàm này được khai báo trong interface OnFeatureClickListener
+- Hàm này dược dùng để điều hướng từ trang MainActivity đi tới những trang Feature khác
+### Tổng kết
+- RecyclerView là một container dùng để hiện thị danh sách với các item có thể linh hoạt chỉnh sửa
+- Có thể thay thế RecyclerView bằng ListView và GridView. Tuy nhiên có thể không 2 loại đó không có thể chỉnh sửa linh hoạt bằng RecyclerView
+#### Mục đích sử dụng:
+- Hiển thị danh sách sản phẩm,
+- Tạo các giao diện dạng lưới, danh sách ngang, danh sách dọc...
+- Tùy chỉnh giao diện của các item.
+#### Các thành phần cơ bản:
+- Adapter: Liên kết dữ liệu với các view trong RecyclerView.
+- LayoutManager: Xác định cách các item được bố trí trong RecyclerView.
+- ViewHolder: Đại diện cho một item trong RecyclerView.
+- ItemDecoration: Thêm phần trang trí cho các item.
+- ItemAnimator: Tạo các hiệu ứng động khi thêm, xóa hoặc cập nhật item.
+
 
 
