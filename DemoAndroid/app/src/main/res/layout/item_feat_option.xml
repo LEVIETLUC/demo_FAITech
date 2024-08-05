@@ -2,13 +2,14 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
-        android:layout_height="130dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/cus_recycle_view"
         android:layout_marginTop="3dp"
+        android:padding="5dp"
         android:id="@+id/feature_item">
 
             <LinearLayout
-                    android:layout_width="350dp"
+                    android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
@@ -43,7 +44,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop ="true"
-                android:layout_alignParentBottom ="true"
+                android:layout_alignParentBottom="true"
                 android:gravity="center"
                 android:rotation="180"
                 android:background="?attr/selectableItemBackground"/>
