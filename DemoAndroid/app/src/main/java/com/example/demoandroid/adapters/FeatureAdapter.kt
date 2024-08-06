@@ -10,10 +10,10 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.demoandroid.R
-import com.example.demoandroid.data.FeatureItem
+import com.example.demoandroid.data.Feature
 
 class FeatureAdapter(
-    private val featureList: List<FeatureItem>,
+    private val featureList: List<Feature>,
     private val listener: OnFeatureClickListener
 ) : RecyclerView.Adapter<FeatureAdapter.FeatureViewHolder>() {
 

@@ -1,7 +1,7 @@
-import com.example.demoandroid.data.FeatureItem
+import com.example.demoandroid.data.Feature
 
 interface OnFeatureClickListener {
 
-    fun onFeatureClick(feature: FeatureItem)
+    fun onFeatureClick(feature: Feature)
 
 }
