@@ -24,6 +24,7 @@ class ViewGroupActivity : AppCompatActivity(), OnViewGroupClickListener {
             ViewGroupType("RelativeLayout", "RelativeLayoutActivity"),
             ViewGroupType("FrameLayout", "FrameLayoutActivity"),
             ViewGroupType("ConstraintLayout", "ConstraintLayoutActivity"),
+            ViewGroupType("CustomLayout", "CustomViewGroupActivity"),
         )
 
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view_btn)
