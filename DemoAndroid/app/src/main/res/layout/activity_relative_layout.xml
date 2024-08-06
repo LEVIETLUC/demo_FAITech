@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.viewgroup.RelativeLayoutActivity">
+
+    <TextView
+            android:id="@+id/text_view_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_txt"
+            android:textSize="22sp"
+            android:textStyle="bold|italic"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+
+    <Button
+            android:id="@+id/button_next"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/next_btn"
+            android:layout_marginTop="50dp"
+            android:layout_alignTop="@id/text_view_data"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+
+</RelativeLayout>

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.demoandroid.R
 import com.example.demoandroid.adapters.FeatureAdapter
-import com.example.demoandroid.data.FeatureItem
+import com.example.demoandroid.data.Feature
 
 class MainActivity : AppCompatActivity(), OnFeatureClickListener {
 
@@ -18,18 +18,21 @@ class MainActivity : AppCompatActivity(), OnFeatureClickListener {
         setContentView(R.layout.activity_main)
 
         val featureList = listOf(
-            FeatureItem("Hello + Name ",
+            Feature("Hello + Name ",
                     "- Thiết kế giao diện bằng XML " +
                     "\n- Truy cập TextView theo id để hiển thị 'Hello + name'" , "HelloTextViewActivity"),
-            FeatureItem("TextView, TextInput dùng XML",
+            Feature("TextView, TextInput dùng XML",
                     "- Thiết kế giao diện bằng XML, cần anh xạ tới các widget của XML" +
                     "\n- Lấy TextView của trang đầu truyền sang trang 2 để làm hint text, sau đó lấy  dữ liệu đã nhập ở trang 2 trả về cho trang 1", "TextViewActivity"),
-            FeatureItem("TextView, TextInput dùng Component có sẵn",
+            Feature("TextView, TextInput dùng Component có sẵn",
                     "- Thiết kế bằng component có sẵn của Kotlin, khởi tạo trực tiếp các widget trong Kotlin" +
                     "\n- Lấy TextView của trang đầu truyền sang trang 2 để làm hint text, sau đó lấy  dữ liệu đã nhập ở trang 2 trả về cho trang 1", "TextViewComponent"),
-            FeatureItem("Load Image trong resource",
+            Feature("Load Image trong resource",
                     "- Thiết kế giao diện bằng XML" +
                     "\n- Sử dụng thẻ ImageView và gán đường dẫn vào trong android:src để hiện thị hình ảnh từ resource", "ImageBaseActivity"),
+            Feature("ViewGroup",
+                    "- Hiển thị các loại ViewGroup cơ bản" +
+                    "\n- Sử dụng RecyclerView để hiển thị danh sách các ViewGroup cơ bản", "ViewGroupActivity"),
         )
 
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
@@ -39,7 +42,7 @@ class MainActivity : AppCompatActivity(), OnFeatureClickListener {
         recyclerView.addItemDecoration(itemDecoration)
     }
 
-    override fun onFeatureClick(feature: FeatureItem) {
+    override fun onFeatureClick(feature: Feature) {
         val intent = Intent(this, Class.forName("com.example.demoandroid.activities.${feature.namePage}"))
         intent.putExtra("FEATURE_NAME", feature.title)
         startActivity(intent)
