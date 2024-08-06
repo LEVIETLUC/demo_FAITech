@@ -1,12 +1,12 @@
 # demo_FAITech
 
 ## Mục Lục
-     * [XML vs Jetpack Compose](#XML-vs-Jetpack-Compose)
-     * [Summary cách tạo view từ xml](#Summary-cách-tạo-view-từ-xml)
-     * [XML với Component thuần trong kotlin](#XML-với-Component-thuần-trong-kotlin)
-     * [RecyclerView](#RecyclerView)
-     * [ViewGroup](#ViewGroup)
-     * [onMeasure và onLayout](#onMeasure-và-onLayout)
+*[XML vs Jetpack Compose](#XML-vs-Jetpack-Compose)
+* [Summary cách tạo view từ xml](#Summary-cách-tạo-view-từ-xml)
+* [XML với Component thuần trong kotlin](#XML-với-Component-thuần-trong-kotlin)
+* [RecyclerView](#RecyclerView)
+* [ViewGroup](#ViewGroup)
+* [onMeasure và onLayout](#onMeasure-và-onLayout)
      
 ## XML vs Jetpack Compose
 
