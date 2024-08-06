@@ -1,5 +1,9 @@
 # demo_FAITech
 
+## Mục Lục
+
+
+
 ## XML vs Jetpack Compose
 
 | So sánh | XML | Jetpack compose |
@@ -92,4 +96,8 @@ LayoutInflate sẽ chuyển xml về tree structure để kotlin/java có thể 
 | Ưu Điểm | Dễ sử dụng, phù hợp với những bố cục đơn giản | Linh hoạt trong việc định vị vị trí tương đối | Linh hoạt, tối ưu tốt với nhiều view con phức tạp, nhiều tính năng hỗ trợ | Đơn giản, hỗ trợ tốt cho fragment |
 | Nhược điểm | Khó tạo những bố cục phức tạp, thiếu linh hoạt | Phức tạp và khó bảo trì khi có nhiều view | Cú pháp phức tạp | Thiếu tính linh hoạt, không phù với layout phức tạp |
 
-
+## onMeasure và onLayout
+### onMeasure
+- Xác định kích thước của ViewGroup và các View con
+- Sử dụng measureChildWithMargins để đo kích thước của từng view con, bao gồm cả margin.
+- Chọn maxWidth(chiều rộng lớn nhất của các view con), totalHeight(tổng chiều cao của các view con)
