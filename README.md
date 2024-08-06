@@ -84,6 +84,12 @@ LayoutInflate sẽ chuyển xml về tree structure để kotlin/java có thể 
 - ViewHolder: Đại diện cho một item trong RecyclerView.
 - ItemDecoration: Thêm phần trang trí cho các item.
 - ItemAnimator: Tạo các hiệu ứng động khi thêm, xóa hoặc cập nhật item.
-
+## ViewGroup
+| So sánh | LinearLayout | RelativeLayout | ConstraintLayout | FrameLayout |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Giống nhau | Dùng để chưa các view con, quản lý sắp xếp bố cục các view con | Dùng để chưa các view con, quản lý sắp xếp bố cục các view con | Dùng để chưa các view con, quản lý sắp xếp bố cục các view con | Dùng để chưa các view con, quản lý sắp xếp bố cục các view con | Dùng để chưa các view con, quản lý sắp xếp bố cục các view con |
+| Khác nhau | Chỉ sắp xếp các view con theo chiều dọc hoặc ngang | Sắp xếp tương đối theo mối quan hệ của các view con | Sắp xếp theo sự ràng buộc | Sắp xếp theo kiểu chồng |
+| Ưu Điểm | Dễ sử dụng, phù hợp với những bố cục đơn giản | Linh hoạt trong việc định vị vị trí tương đối | Linh hoạt, tối ưu tốt với nhiều view con phức tạp, nhiều tính năng hỗ trợ | Đơn giản, hỗ trợ tốt cho fragment |
+| Nhược điểm | Khó tạo những bố cục phức tạp, thiếu linh hoạt | Phức tạp và khó bảo trì khi có nhiều view | Cú pháp phức tạp | Thiếu tính linh hoạt, không phù với layout phức tạp |
 
 
