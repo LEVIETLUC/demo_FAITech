@@ -1,9 +1,13 @@
 # demo_FAITech
 
 ## Mục Lục
-
-
-
+     * [XML vs Jetpack Compose](#XML-vs-Jetpack-Compose)
+     * [Summary cách tạo view từ xml](#Summary-cách-tạo-view-từ-xml)
+     * [XML với Component thuần trong kotlin](#XML-với-Component-thuần-trong-kotlin)
+     * [RecyclerView](#RecyclerView)
+     * [ViewGroup](#ViewGroup)
+     * [onMeasure và onLayout](#onMeasure-và-onLayout)
+     
 ## XML vs Jetpack Compose
 
 | So sánh | XML | Jetpack compose |
@@ -98,6 +102,12 @@ LayoutInflate sẽ chuyển xml về tree structure để kotlin/java có thể 
 
 ## onMeasure và onLayout
 ### onMeasure
-- Xác định kích thước của ViewGroup và các View con
+- Xác định kích thước của ViewGroup và các View con.
+- Với đầu vào là(widthMeasureSpec, heightMeasureSpec) và đầu ra là(kích thước của ViewGroup).
 - Sử dụng measureChildWithMargins để đo kích thước của từng view con, bao gồm cả margin.
-- Chọn maxWidth(chiều rộng lớn nhất của các view con), totalHeight(tổng chiều cao của các view con)
+- Chọn maxWidth(chiều rộng lớn nhất của các view con), totalHeight(tổng chiều cao của các view con).
+#### onLayout
+- Đặt vị trí và kích thước cho các view con trong ViewGroup.
+- Với đầu vào là(changed, l, t, r, b) và đầu ra là(các view con được bố trí trong ViewGroup).
+- Căn chiều ngang của view bằng childLeft và chiều dọc của view bằng cách tính currentTop.
+- Dùng child.layout để thiết lập vị trí của view dựa trên tính toán ở trên
