@@ -29,70 +29,79 @@ class CustomView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
     private val imageBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.demo_img)
 
     private val buttonRect = android.graphics.RectF()
-    private lateinit var boringLayout: BoringLayout
+    private var boringLayout: BoringLayout? = null
 
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+    private var buttonText: String = "Next"
+    private var text: String = "Hello"
+    private var textX: Float = 0f
+    private var textY: Float = 0f
+    private val cornerRadius: Float = 60f
+    private var valButtonTextY: Float = 0f
+    private var valImageLeft: Float = 0f
+    private var valImageTop: Float = 0f
 
-        val desiredWidth = 600
-        val desiredHeight = 800
-
-        val width = resolveSize(desiredWidth, widthMeasureSpec)
-        val height = resolveSize(desiredHeight, heightMeasureSpec)
-        setMeasuredDimension(width, height)
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        initBoringLayout(text, textPaint, w)
+        calculateTextPosition(w, h)
+        calculateButtonAndImagePositions(w, h)
     }
-
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        val canvasWidth = this.width
-        val canvasHeight = this.height
-
-        val text = "Hello"
-        val metrics = BoringLayout.isBoring(text, textPaint)
-
-        if (metrics != null) {
-            boringLayout = BoringLayout.make(
-                text,
-                textPaint,
-                canvasWidth,
-                Layout.Alignment.ALIGN_CENTER,
-                1.0f,
-                0.0f,
-                metrics,
-                false
-            )
-        }
-
-        val textWidth = boringLayout.width
-        val textHeight = boringLayout.height
-
-        val textX = (canvasWidth - textWidth) / 2f
-        val textY = canvasHeight / 2.5f
-
-        boringLayout.let {
+        boringLayout?.let {
             canvas.save()
             canvas.translate(textX, textY)
             it.draw(canvas)
             canvas.restore()
         }
 
-        val buttonWidth = 650
-        val buttonHeight = 130
-        val buttonLeft = (canvasWidth - buttonWidth) / 2f
-        val buttonTop = textY + textHeight + 50
-        val cornerRadius = 60f
-        buttonRect.set(buttonLeft, buttonTop, buttonLeft + buttonWidth, buttonTop + buttonHeight)
-        canvas.drawRoundRect(buttonRect, cornerRadius, cornerRadius, buttonPaint)
+        canvas.drawRoundRect(buttonRect, cornerRadius, cornerRadius , buttonPaint)
 
-        val buttonText = "Next"
         val buttonTextX = buttonRect.centerX()
-        val buttonTextY = buttonTop + buttonHeight / 2f + buttonTextPaint.textSize / 4
+        val buttonTextY = valButtonTextY
         canvas.drawText(buttonText, buttonTextX, buttonTextY, buttonTextPaint)
 
-        val imageLeft = (canvasWidth - imageBitmap.width) / 2f
-        val imageTop = buttonTop + buttonHeight + 50
+        val imageLeft = valImageLeft
+        val imageTop = valImageTop
         canvas.drawBitmap(imageBitmap, imageLeft, imageTop, null)
     }
+
+    private fun initBoringLayout(text: String, textPaint: TextPaint, width: Int) {
+        val metrics = BoringLayout.isBoring(text, textPaint)
+        if (metrics != null) {
+            boringLayout = BoringLayout.make(
+                text,
+                textPaint,
+                width,
+                Layout.Alignment.ALIGN_CENTER,
+                1.0f,
+                0.0f,
+                metrics,
+                false
+
+            )
+        }
+    }
+
+    private fun calculateTextPosition(width: Int, height: Int) {
+        val textWidth = boringLayout?.width ?: 0
+        val textHeight = boringLayout?.height ?: 0
+
+        textX = (width - textWidth) / 2f
+        textY = height / 3f
+    }
+
+    private fun calculateButtonAndImagePositions(width: Int, height: Int) {
+        val buttonWidth = 650
+        val buttonHeight = 130
+        val buttonLeft = (width - buttonWidth) / 2f
+        val buttonTop = textY + (boringLayout?.height ?: 0) + 50
+        buttonRect.set(buttonLeft, buttonTop, buttonLeft + buttonWidth, buttonTop + buttonHeight)
+        valButtonTextY = buttonRect.top + buttonRect.height() / 2f + buttonTextPaint.textSize / 4
+        valImageLeft = (width - imageBitmap.width) / 2f
+        valImageTop = buttonRect.bottom + 50
+    }
+
 }

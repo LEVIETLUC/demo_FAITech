@@ -8,7 +8,7 @@
 * [ViewGroup](#ViewGroup)
 * [onMeasure và onLayout](#onMeasure-và-onLayout)
 * [LayoutParams](#LayoutParams)
-     
+
 ## XML vs Jetpack Compose
 
 | So sánh | XML | Jetpack compose |
@@ -77,7 +77,7 @@ LayoutInflate sẽ chuyển xml về tree structure để kotlin/java có thể 
 - Được dùng để sắp xếp cái item trong RecyclerView theo chiều dọc
 ### ItemDecoration
 - Được dùng để thêm đường phân cách giữa các item và mỗi divider được them theo chiều dọc của danh sách
-### onFeatureClick 
+### onFeatureClick
 - Đây là hàm được gọi khi người dùng click vào item hoặc imageButton, hàm này được khai báo trong interface OnFeatureClickListener
 - Hàm này dược dùng để điều hướng từ trang MainActivity đi tới những trang Feature khác
 ### Tổng kết
@@ -120,7 +120,7 @@ LayoutInflate sẽ chuyển xml về tree structure để kotlin/java có thể 
 - Lớp cơ sở của các loại LayoutParams
 - chứa các thuộc tính cơ bản width, height.
 - Dùng để xác định kích thước của layout
-- MarginLayoutParams được kế thừa từ ViewGroup.LayoutParams và LinearLayout.LayoutParams, RelativeLayout.LayoutParams, FrameLayout được kế thừa từ MarginLayoutParams 
+- MarginLayoutParams được kế thừa từ ViewGroup.LayoutParams và LinearLayout.LayoutParams, RelativeLayout.LayoutParams, FrameLayout được kế thừa từ MarginLayoutParams
 
 | So sánh | MarginLayoutParams | LinearLayout.LayoutParams | RelativeLayout.LayoutParams | FrameLayout |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
