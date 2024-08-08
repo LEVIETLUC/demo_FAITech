@@ -22,6 +22,6 @@
             android:text="@string/next_btn"
             android:layout_marginTop="10dp"
             android:layout_alignTop="@id/text_view_data"
-/>
+    />
 
 </com.example.demoandroid.activities.viewgroup.CustomViewGroup>
