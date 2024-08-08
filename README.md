@@ -146,9 +146,17 @@ Với TextView trong CustomView có thể thay thế BoringLayout bằng Dynamic
 - Nếu nằm trong vùng button thì xử lý sự kiện click button
 
 ## Summary view
-1. Khởi Tạo View: Tạo và thiết lập thuộc tính của View.
-2. Đo Kích Thước (override onMeasure): Tính toán kích thước của View.
-3. Định Vị view con (override onLayout): Xác định vị trí của view trong cây view.
-4. Vẽ (override onDraw): Vẽ nội dung của View.
-5. Xử Lý Sự Kiện: Xử lý sự kiện khi người dùng tương tác với View.
-6. Yêu cầu vẽ lại: Cập nhật lại view khi có sự thay đổi.
+1. Khởi Tạo View
+- Tạo một đối tượng View thông qua các lớp như Activity, Fragment,... Các thuộc tính màu sắc, kích thước được thiết lập
+2. Đo Kích Thước
+- override hàm onMeasure với tham số đầu vào widthMeasureSpec và heightMeasureSpec để đo và thiết lập kích thước của view 
+3. Bố trí view
+- override hàm onLayout sau khi view đã được xác định, dùng LayoutParams để định kích thước và vị trí của nó
+4. Thay đổi vị trí, kích thước
+- hàm sẽ được gọi khi vị trí hay kích thước của view thay đổi(thường nào sau khi đo kích thước và trước khi vẽ lên giao diện)
+5. Vẽ giao diện
+- override hàm onDraw để cẽ nội dung view lên canvas
+6. Xử Lý Sự Kiện
+- Nhận diện và xử lý các sự kiện người dùng tương tác với giao diện bằng một số phương thức như onTouchEvent, onClick,...
+7. Yêu cầu vẽ lại
+- Cập nhật lại view khi có sự thay đổi, gọi phương thức invalidate để yêu cầu vẽ lại view
