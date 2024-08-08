@@ -3,6 +3,7 @@ package com.example.demoandroid.activities
 import android.R
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.text.Editable
@@ -73,7 +74,7 @@ class TextInputComponent : AppCompatActivity() {
         val drawable = GradientDrawable().apply{
             shape = GradientDrawable.RECTANGLE
             cornerRadius = 50f
-            setColor(ContextCompat.getColor(this@TextInputComponent, R.color.holo_purple))
+            setColor(Color.parseColor("#6454a4"))
         }
         return drawable
     }

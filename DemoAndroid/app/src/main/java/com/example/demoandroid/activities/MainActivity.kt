@@ -33,6 +33,10 @@ class MainActivity : AppCompatActivity(), OnFeatureClickListener {
             Feature("ViewGroup",
                     "- Hiển thị các loại ViewGroup cơ bản" +
                     "\n- Sử dụng RecyclerView để hiển thị danh sách các ViewGroup cơ bản", "ViewGroupActivity"),
+            Feature("Custom view",
+                    "- Tạo TextView + Button + ImageView trong CustomView" +
+                    "\n- Override onDraw để vẽ tất cả widget lên 1 view, sử dụng BoringLayout để xác định vị trí TextView", "CustomViewActivity"),
+
         )
 
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
