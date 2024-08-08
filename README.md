@@ -8,7 +8,10 @@
 * [ViewGroup](#ViewGroup)
 * [onMeasure và onLayout](#onMeasure-và-onLayout)
 * [LayoutParams](#LayoutParams)
-     
+* [BoringLayout, DynamicLayout, StaticLayout](#BoringLayout-DynamicLayout-StaticLayout)
+* [Handle event button](#Handle-event-button)
+* [Summary view](#Summary-view)
+
 ## XML vs Jetpack Compose
 
 | So sánh | XML | Jetpack compose |
@@ -77,7 +80,7 @@ LayoutInflate sẽ chuyển xml về tree structure để kotlin/java có thể 
 - Được dùng để sắp xếp cái item trong RecyclerView theo chiều dọc
 ### ItemDecoration
 - Được dùng để thêm đường phân cách giữa các item và mỗi divider được them theo chiều dọc của danh sách
-### onFeatureClick 
+### onFeatureClick
 - Đây là hàm được gọi khi người dùng click vào item hoặc imageButton, hàm này được khai báo trong interface OnFeatureClickListener
 - Hàm này dược dùng để điều hướng từ trang MainActivity đi tới những trang Feature khác
 ### Tổng kết
@@ -120,9 +123,32 @@ LayoutInflate sẽ chuyển xml về tree structure để kotlin/java có thể 
 - Lớp cơ sở của các loại LayoutParams
 - chứa các thuộc tính cơ bản width, height.
 - Dùng để xác định kích thước của layout
-- MarginLayoutParams được kế thừa từ ViewGroup.LayoutParams và LinearLayout.LayoutParams, RelativeLayout.LayoutParams, FrameLayout được kế thừa từ MarginLayoutParams 
+- MarginLayoutParams được kế thừa từ ViewGroup.LayoutParams và LinearLayout.LayoutParams, RelativeLayout.LayoutParams, FrameLayout được kế thừa từ MarginLayoutParams
 
 | So sánh | MarginLayoutParams | LinearLayout.LayoutParams | RelativeLayout.LayoutParams | FrameLayout |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | Đặc điểm | Thêm các thuộc tính margin: leftMargin, topMargin, rightMargin, và bottomMargin. | Thêm các thuộc tính weight, gravity | Thêm thuộc tính xác định mỗi quan hệ của các view con: alignParentTop, below, toRightOf, centerInParent | Thêm thuộc tính gravity |
 | Sử dụng | Dùng để quản lý margin của các view con trong ViewGroup | Dùng để phân chia, sắp xếp các view con theo một hướng hay chiều nhất định trong ViewGroup | Dùng để xác định vị trí của view con tương đối so với vị trí của của các view con khác | Dùng để căn chỉnh các view con trong FrameLayout |
+
+## BoringLayout, DynamicLayout, StaticLayout
+Với TextView trong CustomView có thể thay thế BoringLayout bằng DynamicLayout, StaticLayout với điều kiện:
+- Nếu đoạn text ó thể thay đổi sau khi layout đã được tạo thì sử dụng DynamicLayout
+- Nếu đoạn text không thay đổi nhưng cần viết đoạn text dài và nhiều dòng thì sử dụng StaticLayout
+- Còn đoạn text ngắn và không thay đổi thì nên sử dụng BoringLayout
+
+| So sánh | BoringLayout                                                                                                                                         | StaticLayout                                                                                                                                                                                        | DynamicLayout                                                                                                                                                                                                   |
+| ------------- |------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Đặc điểm | - Phù hợp cho sử dụng văn bản ngắn, đơn giản </br> - Không thể thay đổi động sau khi đã tạo layout </br> - Sử dụng tài nguyên ít nhất trong 3 layout | - Phù hợp với những đoạn văn bản dài, có nhiều  </br> - Không thể thay đổi động sau khi đã tạo layout </br> - Sử dụng ít tài nguyên hơn DynamicLayout vì Không cần phải duy trì trạng thái cập nhật | - Phù hợp với những đoạn văn bản cần cập nhật nội dung nhiều </br> - Có thể thay đổi động nội dung text sau khi đã tạo Layout </br> - Sử dụng nhiều tài nguyên vì cần duy trì trạng thái để xử thay đổi văn bản |
+
+## Handle event button
+- Để có thể xử click button trong Custom view có thể override phương thức onTouchEvent của View
+- Kiểm tra xem điểm chạm có nằm trong vùng button không
+- Nếu nằm trong vùng button thì xử lý sự kiện click button
+
+## Summary view
+1. Khởi Tạo View: Tạo và thiết lập thuộc tính của View.
+2. Đo Kích Thước (override onMeasure): Tính toán kích thước của View.
+3. Định Vị view con (override onLayout): Xác định vị trí của view trong cây view.
+4. Vẽ (override onDraw): Vẽ nội dung của View.
+5. Xử Lý Sự Kiện: Xử lý sự kiện khi người dùng tương tác với View.
+6. Yêu cầu vẽ lại: Cập nhật lại view khi có sự thay đổi.
