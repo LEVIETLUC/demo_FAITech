@@ -7,6 +7,7 @@
 * [RecyclerView](#RecyclerView)
 * [ViewGroup](#ViewGroup)
 * [onMeasure và onLayout](#onMeasure-và-onLayout)
+* [LayoutParams](#LayoutParams)
      
 ## XML vs Jetpack Compose
 
@@ -111,3 +112,17 @@ LayoutInflate sẽ chuyển xml về tree structure để kotlin/java có thể 
 - Với đầu vào là(changed, l, t, r, b) và đầu ra là(các view con được bố trí trong ViewGroup).
 - Căn chiều ngang của view bằng childLeft và chiều dọc của view bằng cách tính currentTop.
 - Dùng child.layout để thiết lập vị trí của view dựa trên tính toán ở trên
+
+## LayoutParams
+- Mục đích: dùng để quản lý bố cục và kích thước các view con trong cùng 1 ViewGroup(do đó khi tạo 1 mỗi ViewGroup thì cần có 1 LayoutParams)
+
+#### ViewGroup.LayoutParams:
+- Lớp cơ sở của các loại LayoutParams
+- chứa các thuộc tính cơ bản width, height.
+- Dùng để xác định kích thước của layout
+- MarginLayoutParams được kế thừa từ ViewGroup.LayoutParams và LinearLayout.LayoutParams, RelativeLayout.LayoutParams, FrameLayout được kế thừa từ MarginLayoutParams 
+
+| So sánh | MarginLayoutParams | LinearLayout.LayoutParams | RelativeLayout.LayoutParams | FrameLayout |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Đặc điểm | Thêm các thuộc tính margin: leftMargin, topMargin, rightMargin, và bottomMargin. | Thêm các thuộc tính weight, gravity | Thêm thuộc tính xác định mỗi quan hệ của các view con: alignParentTop, below, toRightOf, centerInParent | Thêm thuộc tính gravity |
+| Sử dụng | Dùng để quản lý margin của các view con trong ViewGroup | Dùng để phân chia, sắp xếp các view con theo một hướng hay chiều nhất định trong ViewGroup | Dùng để xác định vị trí của view con tương đối so với vị trí của của các view con khác | Dùng để căn chỉnh các view con trong FrameLayout |
