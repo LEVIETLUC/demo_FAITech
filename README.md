@@ -22,7 +22,7 @@
 | Đọc, viết code | Phức tạp, khó khăn hơn | dễ dàng, ngắn gọn hơn  |
 | Tính linh hoạt| Ít linh hoạt, bố cục tĩnh | Linh hoạt hơn, bố cục động  |
 | Hiệu suất | Hiệu quả cao, cần yêu cầu nhiều tài nguyên hơn | Hiệu quả và tối ưu hóa hiệu suất |
-| Tài liệu và cộng đồng | Tài liệu nhiều, cộng đồng lớn | Tài liệu ít hân cũng như công đồng chưa lớn |
+| Tài liệu và cộng đồng | Tài liệu nhiều, cộng đồng lớn | Tài liệu ít hơn cũng như cộng đồng chưa lớn |
 
 
 ![image](https://github.com/user-attachments/assets/e22945be-dba0-43b6-b995-463c63d6cb91)
@@ -138,7 +138,7 @@ Với TextView trong CustomView có thể thay thế BoringLayout bằng Dynamic
 
 | So sánh | BoringLayout                                                                                                                                         | StaticLayout                                                                                                                                                                                        | DynamicLayout                                                                                                                                                                                                   |
 | ------------- |------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Đặc điểm | - Phù hợp cho sử dụng văn bản ngắn, đơn giản </br> - Không thể thay đổi động sau khi đã tạo layout </br> - Sử dụng tài nguyên ít nhất trong 3 layout | - Phù hợp với những đoạn văn bản dài, có nhiều  </br> - Không thể thay đổi động sau khi đã tạo layout </br> - Sử dụng ít tài nguyên hơn DynamicLayout vì Không cần phải duy trì trạng thái cập nhật | - Phù hợp với những đoạn văn bản cần cập nhật nội dung nhiều </br> - Có thể thay đổi động nội dung text sau khi đã tạo Layout </br> - Sử dụng nhiều tài nguyên vì cần duy trì trạng thái để xử thay đổi văn bản |
+| Đặc điểm | - Phù hợp cho sử dụng văn bản ngắn, đơn giản </br> - Không thể thay đổi động sau khi đã tạo layout </br> - Sử dụng tài nguyên ít nhất trong 3 layout | - Phù hợp với những đoạn văn bản dài, có nhiều dòng </br> - Không thể thay đổi động sau khi đã tạo layout </br> - Sử dụng ít tài nguyên hơn DynamicLayout vì Không cần phải duy trì trạng thái cập nhật | - Phù hợp với những đoạn văn bản cần cập nhật nội dung nhiều </br> - Có thể thay đổi động nội dung text sau khi đã tạo Layout </br> - Sử dụng nhiều tài nguyên vì cần duy trì trạng thái để xử thay đổi văn bản |
 
 ## Handle event button
 - Để có thể xử click button trong Custom view có thể override phương thức onTouchEvent của View
@@ -155,7 +155,7 @@ Với TextView trong CustomView có thể thay thế BoringLayout bằng Dynamic
 4. Thay đổi vị trí, kích thước
 - hàm sẽ được gọi khi vị trí hay kích thước của view thay đổi(thường nào sau khi đo kích thước và trước khi vẽ lên giao diện)
 5. Vẽ giao diện
-- override hàm onDraw để cẽ nội dung view lên canvas
+- override hàm onDraw để vẽ nội dung view lên canvas
 6. Xử Lý Sự Kiện
 - Nhận diện và xử lý các sự kiện người dùng tương tác với giao diện bằng một số phương thức như onTouchEvent, onClick,...
 7. Yêu cầu vẽ lại
