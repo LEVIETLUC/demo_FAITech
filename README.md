@@ -11,6 +11,8 @@
 * [BoringLayout, DynamicLayout, StaticLayout](#BoringLayout-DynamicLayout-StaticLayout)
 * [Handle event button](#Handle-event-button)
 * [Summary view](#Summary-view)
+* [Xử lí chặn nhận sự kiện](#Xử-lí-chặn-nhận-sự-kiện)
+* [ScrollView](#ScrollView)
 
 ## XML vs Jetpack Compose
 
@@ -160,3 +162,19 @@ Với TextView trong CustomView có thể thay thế BoringLayout bằng Dynamic
 - Nhận diện và xử lý các sự kiện người dùng tương tác với giao diện bằng một số phương thức như onTouchEvent, onClick,...
 7. Yêu cầu vẽ lại
 - Cập nhật lại view khi có sự thay đổi, gọi phương thức invalidate để yêu cầu vẽ lại view
+
+## Xử lí chặn nhận sự kiện
+- Phương thức xử lý sự kiện Click sẽ được truyền từ view cha xuống view con
+- Để chặn sự kiện click vào view con thì có thể sử dụng phương thức onInterceptTouchEvent của ViewGroup
+- Trả về true nếu muốn chặn sự kiện click vào view con, ngược lại trả về false
+- Khi trả về true thì sự kiện click sẽ không được truyền xuống view con
+- Khi trả về false thì sự kiện click sẽ được truyền xuống view con
+- Còn requestDisallowInterceptTouchEvent là dùng để yêu cầu ViewGroup có hay không chặn sự kiện click vào view con
+
+## ScrollView
+- Dùng để có thể cuộn xem nội dung khi nội dung vượt quá kích thước màn hình
+- Để sử dụng ScrollView cần bọc nội dung cần cuộn vào ScrollView
+- Xử lý 2 ScrollView lồng nhau: 
+  + sử dụng canScrollVertically để ScrollView con đã cuộn đến đỉnh hay cuối cùng chưa
+  + Nếu ScrollView đã cuộn tới hay cuối cùng thì dùng requestDisallowInterceptTouchEvent để bỏ chặn sự kiện cuộn của ScrollView cha
+  + Nếu ScrollView chưa cuộn tới hay cuối cùng thì chặn sự kiện cuộn của ScrollView cha

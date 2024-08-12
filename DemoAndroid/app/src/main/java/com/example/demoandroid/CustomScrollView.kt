@@ -12,7 +12,6 @@ class CustomScrollView @JvmOverloads constructor(
 
     override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
         ev?.let {
-            println("Status: ${canScrollVertically(1)}")
             if(canScrollVertically(1) || canScrollVertically(-1)){
                 parent.requestDisallowInterceptTouchEvent(true)
             }
