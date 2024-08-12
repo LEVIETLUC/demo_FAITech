@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -8,46 +8,47 @@
         android:padding="5dp"
         android:id="@+id/feature_item">
 
-            <LinearLayout
-                    android:id="@+id/feat_item"
-                    android:layout_width="320dp"
+
+        <LinearLayout
+                android:id="@+id/feat_item"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/feat_name_txt"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:textSize="16sp"
+                    android:textStyle="bold|italic"
+                    android:paddingTop="15dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="2dp"
+                    android:textColor="@color/cyan"/>
 
-                <TextView
-                        android:id="@+id/feat_name_txt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textStyle="bold|italic"
-                        android:paddingTop="15dp"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="2dp"
-                        android:textColor="@color/cyan"/>
+            <TextView
+                    android:id="@+id/feat_desc_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="2dp"
+                    android:textColor="@color/black"/>
+        </LinearLayout>
 
-                <TextView
-                        android:id="@+id/feat_desc_txt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="2dp"
-                        android:textColor="@color/black"/>
-            </LinearLayout>
+    <ImageButton
+            android:id="@+id/edit_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back_ic"
+            android:scaleType="fitCenter"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:rotation="180"
+            android:background="?attr/selectableItemBackground"/>
 
-        <ImageButton
-                android:id="@+id/edit_btn"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/back_ic"
-                android:scaleType="fitCenter"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@id/feat_item"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:rotation="180"
-                android:background="?attr/selectableItemBackground"/>
-
-</RelativeLayout>
+</RelativeLayout
+>

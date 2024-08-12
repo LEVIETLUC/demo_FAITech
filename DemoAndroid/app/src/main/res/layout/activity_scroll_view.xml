@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.demoandroid.CustomScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scroll_view_parent"
+        tools:context=".activities.ScrollViewActivity">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <com.example.demoandroid.CustomScrollView
+
+            android:id="@+id/scroll_view_child"
+                android:layout_width="match_parent"
+                    android:layout_height="200dp">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_list_text"
+                    android:orientation="vertical">
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_sample"
+                        android:textSize="18sp"
+                        android:textStyle="italic"
+                        android:padding = "10dp"
+                        android:layout_gravity="center_vertical"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_sample"
+                        android:textSize="18sp"
+                        android:textStyle="italic"
+                        android:padding = "10dp"
+                        android:layout_gravity="center_vertical"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_sample"
+                        android:textSize="18sp"
+                        android:textStyle="italic"
+                        android:padding = "10dp"
+                        android:layout_gravity="center_vertical"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_sample"
+                        android:textSize="18sp"
+                        android:textStyle="italic"
+                        android:padding = "10dp"
+                        android:layout_gravity="center_vertical"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_sample"
+                        android:textSize="18sp"
+                        android:textStyle="italic"
+                        android:padding = "10dp"
+                        android:layout_gravity="center_vertical"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_sample"
+                        android:textSize="18sp"
+                        android:textStyle="italic"
+                        android:padding = "10dp"
+                        android:layout_gravity="center_vertical"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_sample"
+                        android:textSize="18sp"
+                        android:textStyle="italic"
+                        android:padding = "10dp"
+                        android:layout_gravity="center_vertical"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_sample"
+                        android:textSize="18sp"
+                        android:textStyle="italic"
+                        android:padding = "10dp"
+                        android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+        </com.example.demoandroid.CustomScrollView>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sample"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:padding = "10dp"
+                android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+</com.example.demoandroid.CustomScrollView>

@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.text.*
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.example.demoandroid.R
@@ -66,6 +67,27 @@ class CustomView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
         val imageLeft = valImageLeft
         val imageTop = valImageTop
         canvas.drawBitmap(imageBitmap, imageLeft, imageTop, null)
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        if (event.action == MotionEvent.ACTION_DOWN) {
+            if (buttonRect.contains(event.x, event.y)) {
+                if(buttonPaint.color == Color.parseColor("#6454a4")) {
+                    buttonPaint.color = Color.parseColor("#ff0000")
+                } else {
+                    buttonPaint.color = Color.parseColor("#6454a4")
+                }
+                invalidate()
+                performClick()
+                return true
+            }
+        }
+        return super.onTouchEvent(event)
+    }
+
+    override fun performClick(): Boolean {
+        super.performClick()
+        return true
     }
 
     private fun initBoringLayout(text: String, textPaint: TextPaint, width: Int) {
