@@ -3,6 +3,8 @@ package com.example.demoandroid.activities
 import OnFeatureClickListener
 import android.content.Intent
 import android.os.Bundle
+import android.view.MotionEvent
+import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,6 +38,13 @@ class MainActivity : AppCompatActivity(), OnFeatureClickListener {
             Feature("Custom view",
                     "- Tạo TextView + Button + ImageView trong CustomView" +
                     "\n- Override onDraw để vẽ tất cả widget lên 1 view, sử dụng BoringLayout để xác định vị trí TextView", "CustomViewActivity"),
+            Feature("Handle event Button",
+                    "- Xử lý sự kiện chạm trên Button và LinearLayout" +
+                    "\n- Khi nhấn Button, LinearLayout sẽ chặn sự kiện chạm, khi nhấn LinearLayout, Button sẽ chặn sự kiện chạm", "HandleEventButtonActivity"),
+            Feature("ScrollView",
+                    "- Sử dụng ScrollView để cuộn nội dung" +
+                    "\n- Xử lí 2 ScrollView lồng nhau", "ScrollViewActivity"),
+
 
         )
 
@@ -44,6 +53,8 @@ class MainActivity : AppCompatActivity(), OnFeatureClickListener {
         recyclerView.adapter = FeatureAdapter(featureList, this)
         val itemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         recyclerView.addItemDecoration(itemDecoration)
+
+
     }
 
     override fun onFeatureClick(feature: Feature) {

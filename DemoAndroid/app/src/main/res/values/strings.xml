@@ -10,4 +10,5 @@
     <string name="get_text_and_back_btn">Get text and back</string>
     <string name="image_txt">Image Base Demo</string>
     <string name="feature_name_txt">Feature Name</string>
+    <string name="text_sample">Text sample for ScrollView</string>
 </resources>
