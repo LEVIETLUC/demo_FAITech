@@ -16,7 +16,7 @@
                 android:name=".activities.ScrollViewActivity"
                 android:exported="false"/>
         <activity
-                android:name=".activities.HandleEventButtonActivity"
+                android:name=".activities.HandleEventViewGroupActivity"
                 android:exported="false"/>
         <activity
                 android:name=".activities.CustomViewActivity"
