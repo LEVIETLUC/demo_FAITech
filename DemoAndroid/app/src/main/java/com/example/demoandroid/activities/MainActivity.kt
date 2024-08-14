@@ -44,6 +44,11 @@ class MainActivity : AppCompatActivity(), OnFeatureClickListener {
             Feature("ScrollView",
                     "- Sử dụng ScrollView để cuộn nội dung" +
                     "\n- Xử lí 2 ScrollView lồng nhau", "ScrollViewActivity"),
+            Feature("Foreground Service",
+                    "- Tạo Foreground Service" +
+                    "\n- Tạo Notification Channel" +
+                    "\n- Start Foreground Service" +
+                    "\n- Stop Foreground Service", "ForegroundServiceActivity"),
 
 
         )
