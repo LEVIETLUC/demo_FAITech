@@ -171,6 +171,10 @@ Với TextView trong CustomView có thể thay thế BoringLayout bằng Dynamic
   + Khi ViewGroup A gọi onInterceptTouchEvent = false để không chặn sự kiện chạm thì dispatchTouchEvent sẽ phân phối tới View B và TouchEvent của view B sẽ xử lí sự kiện chạm trước và có thể request viewgroup những lần sau không chặn sự kiện
   <img width="845" alt="image" src="https://github.com/user-attachments/assets/49322aef-8f78-4abb-9f3e-fb23919e261c">
 - Tóm lại, nếu onInterceptTouchEvent được gọi = true trước thì có chạm bao nhiêu lần thì sự kiện chạm cũng không xuống được tới view con cho duf view có con có gọi requestDisallowInterceptTouchEvent
+- để một dispatchTouchEvent có thể truyền TouchEvent sang một View con khác khi onInterceptTouchEvent của ViewGroup = fasle 
+  + dispatchTouchEvent kiểm tra từng view con để xem view nào có thể nhận sự kiện chạm tiếp theo bằng cách tính toán tọa độ của sự kiện so với vị trí của các view con khác
+  + Sau khi xác định được view tiếp theo nhận sự kiện chạm thì tiến hành tạo bản sao của MotionEvent và sau đó gọi phương thức dispatchTouchEvent của view đã được xác định chuẩn bị nhận sự kiện để bắt đầu chuyển bản sao sự kiện chạm sang view đó
+  + Cuối cùng giải phóng bộ nhớ và return true để đánh dấu sự kiện đã được xử lý
 ## ScrollView
 - Dùng để có thể cuộn xem nội dung khi nội dung vượt quá kích thước màn hình
 - Để sử dụng ScrollView cần bọc nội dung cần cuộn vào ScrollView
