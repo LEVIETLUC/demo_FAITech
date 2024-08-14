@@ -38,9 +38,9 @@ class MainActivity : AppCompatActivity(), OnFeatureClickListener {
             Feature("Custom view",
                     "- Tạo TextView + Button + ImageView trong CustomView" +
                     "\n- Override onDraw để vẽ tất cả widget lên 1 view, sử dụng BoringLayout để xác định vị trí TextView", "CustomViewActivity"),
-            Feature("Handle event Button",
-                    "- Xử lý sự kiện chạm trên Button và LinearLayout" +
-                    "\n- Khi nhấn Button, LinearLayout sẽ chặn sự kiện chạm, khi nhấn LinearLayout, Button sẽ chặn sự kiện chạm", "HandleEventButtonActivity"),
+            Feature("Handle event touch",
+                    "- Xử lý sự kiện chạm trên View và ViewGroup" +
+                    "\n- Sử dụng onTouchEvent, onInterceptTouchEvent, dispatchTouchEvent để xử lý sự kiện chạm và khi view con gọi requestDisallowInterceptTouchEvent để yêu cầu không chặn hàm đó có được thục hiện hay không ", "HandleEventViewGroupActivity"),
             Feature("ScrollView",
                     "- Sử dụng ScrollView để cuộn nội dung" +
                     "\n- Xử lí 2 ScrollView lồng nhau", "ScrollViewActivity"),

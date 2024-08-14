@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".activities.HandleEventViewGroupActivity"
+        android:id="@+id/btn_layout">
+
+    <com.example.demoandroid.activities.CustomViewGroupA
+            android:id="@+id/custom_view_group_a"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:background="#FFCDD2"
+            android:layout_margin="5dp">
+
+        <com.example.demoandroid.activities.CustomViewB
+                android:id="@+id/custom_view_group_b"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#BBDEFB">
+
+        </com.example.demoandroid.activities.CustomViewB>
+
+    </com.example.demoandroid.activities.CustomViewGroupA>
+
+</LinearLayout>
