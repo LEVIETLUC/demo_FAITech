@@ -11,7 +11,7 @@
 * [BoringLayout, DynamicLayout, StaticLayout](#BoringLayout-DynamicLayout-StaticLayout)
 * [Handle event button](#Handle-event-button)
 * [Summary view](#Summary-view)
-* [Xử lí TouchEvent](#Xử-lí-chặn-nhận-sự-kiện)
+* [Xử lí TouchEvent](#Xử-lí-TouchEvent)
 * [ScrollView](#ScrollView)
 
 ## XML vs Jetpack Compose
