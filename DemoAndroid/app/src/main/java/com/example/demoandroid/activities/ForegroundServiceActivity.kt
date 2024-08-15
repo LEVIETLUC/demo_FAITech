@@ -3,7 +3,10 @@ package com.example.demoandroid.activities
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -12,63 +15,40 @@ import com.example.demoandroid.R
 
 class ForegroundServiceActivity : AppCompatActivity() {
 
-    private val LOCATION_PERMISSION_REQUEST_CODE = 1
-    private val NOTIFICATION_PERMISSION_REQUEST_CODE = 2
+    private lateinit var buttonStop: Button
+    private lateinit var buttonStart: Button
+    private lateinit var secondsInput: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_foreground_service)
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
-            ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION),
-                LOCATION_PERMISSION_REQUEST_CODE
-            )
-        } else {
-            checkNotificationPermissionAndStartService()
+        buttonStop = findViewById(R.id.button_stop)
+        buttonStart = findViewById(R.id.button_start)
+        secondsInput = findViewById(R.id.edit_seconds)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 1)
+        }
+
+        buttonStart.setOnClickListener {
+            clickStartService()
+        }
+        buttonStop.setOnClickListener {
+            clickStopService()
         }
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            LOCATION_PERMISSION_REQUEST_CODE -> {
-                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    checkNotificationPermissionAndStartService()
-                } else {
-                    // Permission denied, handle accordingly
-                }
-            }
-            NOTIFICATION_PERMISSION_REQUEST_CODE -> {
-                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    startForegroundService()
-                } else {
-                    // Permission denied, handle accordingly
-                }
-            }
-        }
+    private fun clickStartService() {
+        val intent = Intent(this, ForegroundServiceNoti::class.java)
+        intent.putExtra("seconds_input", secondsInput.text.toString().toInt())
+        intent.action = "START"
+        startService(intent)
     }
 
-    private fun checkNotificationPermissionAndStartService() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
-                NOTIFICATION_PERMISSION_REQUEST_CODE
-            )
-        } else {
-            startForegroundService()
-        }
+    private fun clickStopService() {
+        val intent = Intent(this, ForegroundServiceNoti::class.java)
+        intent.action = "STOP"
+        startService(intent)
     }
 
-    private fun startForegroundService() {
-        val serviceIntent = Intent(this, ForegroundServiceNoti::class.java)
-        ContextCompat.startForegroundService(this, serviceIntent)
-    }
 }
