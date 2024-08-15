@@ -13,6 +13,7 @@
 * [Summary view](#Summary-view)
 * [Xử lí TouchEvent](#Xử-lí-TouchEvent)
 * [ScrollView](#ScrollView)
+* [Service](#Service)
 
 ## XML vs Jetpack Compose
 
@@ -178,3 +179,26 @@ Với TextView trong CustomView có thể thay thế BoringLayout bằng Dynamic
   + sử dụng canScrollVertically để ScrollView con đã cuộn đến đỉnh hay cuối cùng chưa
   + Nếu ScrollView đã cuộn tới hay cuối cùng thì dùng requestDisallowInterceptTouchEvent để bỏ chặn sự kiện cuộn của ScrollView cha
   + Nếu ScrollView chưa cuộn tới hay cuối cùng thì chặn sự kiện cuộn của ScrollView cha
+
+## Service
+- Service là một thành phần của android thực hiện chạy các tác vụ nền mà không cần giao diện người dùng
+- Unbound Service: Không cần ràng buộc với bất kỳ thành phần nào, chạy liên tục cho đến khi hoàn thành công việc hoặc bị buộc huỷ
+- Bound Service: Cung cấp các ràng buộc liên kết cho các thành phần khác, như Activity, Broadcast Receiver, Service khác
+- Có 3 loại service cụ thể: Foreground Service(Unbound Service), Background Service(Unbound Service), Bound Service
+### Vòng đời của Service
+ - onCreate(): Được gọi khi Service được tạo lần đầu tiên.
+ - onStartCommand(): Được gọi mỗi khi một component yêu cầu Service bắt đầu, cung cấp các chỉ dẫn từ Intent.
+ - onBind()(dành cho bound service): Được gọi khi một component muốn liên kết với Service.(với Unbound Service thì thường sẽ return null)
+ - onUnbind()(dành cho bound service: Được gọi khi tất cả các client đều ngừng liên kết với Service.
+ - onDestroy(): Được gọi khi Service bị dừng hoặc hủy.
+
+### Phân biệt Foreground service và Background service và Bound service
+- Foreground service: 
+  + Là service chạy trong nền nhưng người dùng có thể nhận biết được nó đang chạy thông qua notification và vẫn sẽ tiếp tục chạy ngay cả khi không activity trên màn hình
+  + Thường được sử dụng khi cần chạy các tác vụ lâu dài như phát nhạc, bấm thời gian, định vị GPS
+- Background service:
+    + Là service chạy trong nền nhưng người dùng không nhận biết được nó đang chạy, cũng không tuơng tác với nó
+    + Thường được sử dụng khi cần chạy các tác vụ ngắn gọn như đồng bộ hóa dữ liệu, tải tài nguyên từ mạng,
+- Bound service:
+    + Bound Service cho phép các thành phần khác (như Activity, Fragment) liên kết (bind) với nó để giao tiếp và sử dụng các phương thức hoặc truy xuất dữ liệu từ Service.
+    + Thường được sử dụng khi cần giao tiếp giữa các thành phần khác như Activity, Fragment, Service khác
