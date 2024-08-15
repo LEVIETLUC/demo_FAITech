@@ -10,13 +10,10 @@ import android.os.Build
 import android.os.CountDownTimer
 import android.os.IBinder
 import android.util.Log
-import android.widget.Button
-import android.widget.RemoteViews
-import android.widget.TextView
 import androidx.core.app.NotificationCompat
 import com.example.demoandroid.activities.ForegroundServiceActivity
 
-class ForegroundServiceNoti : Service() {
+class ForegroundService : Service() {
 
     private val channelId = "foreground_service_channel"
     private var countDownTimer: CountDownTimer? = null
@@ -37,8 +34,8 @@ class ForegroundServiceNoti : Service() {
         Log.d("ForegroundService", "onStartCommand")
         val secondsInput = intent?.getIntExtra("seconds_input", 0)
         when (intent?.action) {
-            "START" -> startCountDownTimer(secondsInput!!.toLong())
-            "STOP" -> stopCountDownTimer()
+            "START FOREGROUND" -> startCountDownTimer(secondsInput!!.toLong())
+            "STOP FOREGROUND" -> stopCountDownTimer()
         }
 
         return START_NOT_STICKY

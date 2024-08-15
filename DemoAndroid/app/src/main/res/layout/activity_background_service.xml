@@ -5,12 +5,10 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity = "center"
+        tools:context=".activities.BackgroundServiceActivity"
+        android:gravity="center"
         android:padding="24dp"
-        android:orientation="vertical"
-        tools:context=".activities.ForegroundServiceActivity">
-
-
+        android:orientation="vertical">
     <EditText
             android:id="@+id/edit_seconds"
             android:layout_width="match_parent"
@@ -25,19 +23,8 @@
             android:id="@+id/button_start"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="@string/start_foreground_btn"
+            android:text="@string/start_background_btn"
             android:layout_marginTop="15dp"
             android:layout_gravity="center"
     />
-    <Button
-            android:id="@+id/button_stop"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="@string/stop_foreground_btn"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-    />
-
-
-
 </LinearLayout>
