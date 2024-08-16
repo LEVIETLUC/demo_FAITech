@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
             android:allowBackup="true"
@@ -16,6 +17,9 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.DemoAndroid"
             tools:targetApi="31">
+        <activity
+                android:name=".activities.BroadcastReceiverActivity"
+                android:exported="false"/>
         <activity
                 android:name=".activities.BackgroundServiceActivity"
                 android:exported="false"/>
@@ -76,12 +80,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <service
                 android:name=".ForegroundService"
                 android:exported="false"
                 android:foregroundServiceType="mediaPlayback"/>
         <service android:name=".BackgroundService"/>
+
     </application>
 
 </manifest>

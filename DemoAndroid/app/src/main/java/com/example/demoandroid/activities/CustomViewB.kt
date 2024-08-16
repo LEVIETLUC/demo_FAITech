@@ -11,20 +11,22 @@ class CustomViewB @JvmOverloads constructor(
 ) : View(context, attrs) {
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
-        when(ev?.action) {
-            MotionEvent.ACTION_DOWN -> {
-                Log.d("CustomViewB", "dispatchTouchEventB: ACTION_DOWN")
-            }
-            MotionEvent.ACTION_UP -> {
-                Log.d("CustomViewB", "dispatchTouchEventB: ACTION_UP")
-            }
-            MotionEvent.ACTION_MOVE -> {
-                Log.d("CustomViewB", "dispatchTouchEventB: ACTION_MOVE")
-            }
-            MotionEvent.ACTION_CANCEL -> {
-                Log.d("CustomViewB", "dispatchTouchEventB: ACTION_CANCEL")
-            }
-        }
+//        when(ev?.action) {
+//            MotionEvent.ACTION_DOWN -> {
+//                Log.d("CustomViewB", "dispatchTouchEventB: ACTION_DOWN")
+//            }
+//            MotionEvent.ACTION_UP -> {
+//                Log.d("CustomViewB", "dispatchTouchEventB: ACTION_UP")
+//            }
+//            MotionEvent.ACTION_MOVE -> {
+//                Log.d("CustomViewB", "dispatchTouchEventB: ACTION_MOVE")
+//            }
+//            MotionEvent.ACTION_CANCEL -> {
+//                Log.d("CustomViewB", "dispatchTouchEventB: ACTION_CANCEL")
+//            }
+//        }
+        parent.requestDisallowInterceptTouchEvent(true)
+
         return super.dispatchTouchEvent(ev)
     }
 
