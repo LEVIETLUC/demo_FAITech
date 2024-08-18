@@ -53,6 +53,9 @@ class MainActivity : AppCompatActivity(), OnFeatureClickListener {
             Feature("Broadcast Receiver",
                 "- Tạo Broadcast Receiver" +
                 "\n- Nhận sự kiện khi mạng thay đổi và hiển thị thông báo", "BroadcastReceiverActivity"),
+            Feature("Load Image from URL",
+                "- Load ảnh từ URL" +
+                "\n- Nhập URL ảnh vào và hiển thị ảnh", "LoadImageActivity"),
 
         )
 
