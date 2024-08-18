@@ -50,7 +50,12 @@ class MainActivity : AppCompatActivity(), OnFeatureClickListener {
             Feature("Background Service",
                 "- Tạo Foreground Service" +
                 "\n- Không cần thông báo cho người dùng khi chạy background và chỉ chạy tầm hơn 1 phút là sẽ bị hệ thống kill" , "BackgroundServiceActivity"),
-
+            Feature("Broadcast Receiver",
+                "- Tạo Broadcast Receiver" +
+                "\n- Nhận sự kiện khi mạng thay đổi và hiển thị thông báo", "BroadcastReceiverActivity"),
+            Feature("Load Image from URL",
+                "- Load ảnh từ URL" +
+                "\n- Nhập URL ảnh vào và hiển thị ảnh", "LoadImageActivity"),
 
         )
 
