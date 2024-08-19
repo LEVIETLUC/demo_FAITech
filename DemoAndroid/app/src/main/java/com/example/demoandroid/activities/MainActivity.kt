@@ -56,6 +56,9 @@ class MainActivity : AppCompatActivity(), OnFeatureClickListener {
             Feature("Load Image from URL",
                 "- Load ảnh từ URL" +
                 "\n- Nhập URL ảnh vào và hiển thị ảnh", "LoadImageActivity"),
+            Feature("Parse JSON",
+                "- Parse JSON từ file" +
+                "\n- Và parse thành Map", "ParseJsonActivity"),
 
         )
 
