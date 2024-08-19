@@ -51,7 +51,6 @@ class ParseJsonActivity : AppCompatActivity() {
         btnJsonParser.setOnClickListener {
             val map = CustomHandleJSON.jsonToMapCus(tvParseJson.text.toString())
             Log.d("ParseJsonActivity", "map: $map")
-            Log.d("ParseJsonActivity", "value: ${map["key"]}")
             userData = mapToUser(map)
             val userView = formatStringToDisplay(userData)
             tvParseJson.text = userView
@@ -61,6 +60,7 @@ class ParseJsonActivity : AppCompatActivity() {
 
         btnFormatJson.setOnClickListener {
             val json = CustomHandleJSON.mapToJsonCus(userToMap(userData))
+            Log.d("ParseJsonActivity", "json: $json")
             tvParseJson.text = json
             stateBtnnGroup = false
             updateButtonStates()
