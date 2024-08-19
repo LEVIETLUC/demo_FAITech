@@ -17,4 +17,7 @@
     <string name="time_default">00:00</string>
     <string name="title_noti">Counting down</string>
     <string name="enter_seconds">enter seconds</string>
+    <string name="tv_parsejson">ParseJSON</string>
+    <string name="json_parser">JSON Parser</string>
+    <string name="format_json">Format Json</string>
 </resources>
