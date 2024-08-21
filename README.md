@@ -228,12 +228,16 @@ Với TextView trong CustomView có thể thay thế BoringLayout bằng Dynamic
   + POST: gửi dữ liệu lên server
   + PUT: cập nhật dữ liệu lên server
   + DELETE: xóa dữ liệu trên server
+- ResponseCode tương tự như cờ hiệu thể hiện trạng thái mà một máy chủ gửi về để đáp lại yêu cầu HTTP từ máy khách. Nó cho biết kết quả của việc xử lý yêu cầu. Một số đầu ResponseCode
+<img width="153" alt="image" src="https://github.com/user-attachments/assets/5084713a-50d4-4d24-a1cf-3e8935655773">
+
 #### Luồng hoạt động của HTTPConnection
 - gán một url sau đó thực hiện openConnection để thiết lập kết nối với server bằng url
 - Đặt nó trong khối lệnh try catch để có thề bắt lỗi
 - Khi mở connect thành công thì requestMethod cuối cùng sẽ kết nối với url đó và method đó
-- Nhận response và duyệt responseCode và dựa vào code đó thì sẽ xác định làm gì tiếp theo
-- ở finally thì cần có closeConnection để tránh làm tiêu tốn tài nguyên 
+- Bắt đầu truyền request dữ liệu qua cho server
+- Và đợi Nhận response và duyệt responseCode và dựa vào code đó thì sẽ xác định làm gì tiếp theo
+- ở finally thì cần có closeConnection để tránh làm tiêu tốn tài nguyên
 
 
 #### Đóng/Mở connection
@@ -299,6 +303,13 @@ Với TextView trong CustomView có thể thay thế BoringLayout bằng Dynamic
   - vơi 2 mục đích chính là xác thực và mã hóa
     + Xác thực: giúp xác thực danh tính của một website hoặc một server.
     + Mã hóa: Chứng chỉ số chứa khóa công khai (public key) được sử dụng để mã hóa dữ liệu trong quá trình handshake TLS.
+  - Cấu trúc của một certifiate:
+    + Subject: Thông thường là tên miền của máy chủ.
+    + Issuer: Thông tin về CA đã cấp chứng chỉ.
+    + Validity: Thời gian hiệu lực của chứng chỉ (từ ngày bắt đầu đến ngày kết thúc).
+    + Public Key: Khóa công khai của máy chủ.
+    + Signature Algorithm: Thuật toán được sử dụng để tạo chữ ký số của CA.
+    + Digital Signature: Chữ ký số của CA, được tạo bằng cách mã hóa một hash của chứng chỉ bằng khóa riêng của CA.
   - Cách thức hoạt động:
     + Khi client kết nối đến server, server sẽ gửi chứng chỉ số của nó cho client.
     + Client kiểm tra tính hợp lệ của chứng chỉ.
