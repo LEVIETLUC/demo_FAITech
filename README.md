@@ -14,6 +14,8 @@
 * [Xử lí TouchEvent](#Xử-lí-TouchEvent)
 * [ScrollView](#ScrollView)
 * [Service](#Service)
+* [JSON](#JSON)
+* [HTTP](#HTTP)
 
 ## XML vs Jetpack Compose
 
@@ -206,3 +208,98 @@ Với TextView trong CustomView có thể thay thế BoringLayout bằng Dynamic
 - Bound service:
     + Bound Service cho phép các thành phần khác (như Activity, Fragment) liên kết (bind) với nó để giao tiếp và sử dụng các phương thức hoặc truy xuất dữ liệu từ Service.
     + Thường được sử dụng khi cần giao tiếp giữa các thành phần khác như Activity, Fragment, Service khác
+### JSON
+- Là dạng ngôn ngữ chứa dữ liệu. Dữ liệu được lưu dưới dạng cặp key-value
+- Được xây dựng ở dạng data hierarchy
+- Cấu trúc của JSON: 
+  + Object: là một tập hợp các cặp key-value, mỗi cặp key-value được phân cách bởi dấu phẩy và được bao bọc bởi dấu ngoặc nhọn
+  + Array: là một tập hợp các giá trị, mỗi giá trị được phân cách bởi dấu phẩy và được bao bọc bởi dấu ngoặc vuông
+  + Value: là một giá trị, có thể là một chuỗi, một số, một boolean, một object hoặc một array
+ - Quá trình chuyển đổi JSON sang Object:
+    + Parsing dữ liệu: pasing sẽ đọc dữ liệu từng ký tự. Xác đinh các ký tự đặc biệt giữa key-value,”:”, “;”, “,”, “{“, “}”, “[“, “]”
+    + Xác định kiểu dữ liệu: kiểm tra dữ liệu đọc được từ JSON để xác định kiểu dữ liệu của dữ liệu đó
+    + Thư viện sẽ xây dựng các đối tượng tương ứng trong bộ nhớ, một cặp "key-value" sẽ được chuyển thành một trường trong JsonObject
+
+### HTTP
+- Là giao thức truyền tải dữ liệu giữa máy chủ và máy client
+- Http hoạt động theo mô hình request-response, client gửi request đến server và server trả về response với nội dung tương ứng
+- Các phương thức HTTP thường dùng:
+  + GET: lấy dữ liệu từ server
+  + POST: gửi dữ liệu lên server
+  + PUT: cập nhật dữ liệu lên server
+  + DELETE: xóa dữ liệu trên server
+#### Luồng hoạt động của HTTPConnection
+- gán một url sau đó thực hiện openConnection để thiết lập kết nối với server bằng url
+- Đặt nó trong khối lệnh try catch để có thề bắt lỗi
+- Khi mở connect thành công thì requestMethod cuối cùng sẽ kết nối với url đó và method đó
+- Nhận response và duyệt responseCode và dựa vào code đó thì sẽ xác định làm gì tiếp theo
+- ở finally thì cần có closeConnection để tránh làm tiêu tốn tài nguyên 
+
+
+#### Đóng/Mở connection
+  * openConnection(): phương thức này được dùng để thiết lập kết nối đến một URL thông qua một đối tượng HttpURLConnection. Đây là bước đầu tiên trong việc giao tiếp với một máy chủ qua HTTP. openConnection() tạo ra một kết nối và chuẩn bị để gửi yêu cầu, nhưng chưa thực hiện kết nối vật lý đến máy chủ
+  * connect(): Phương thức này thực sự mở kết nối TCP/IP đến máy chủ từ phía máy khách. Nó xảy ra sau khi bạn đã cấu hình yêu cầu HTTP (như phương thức GET hoặc POST, phần header, phần body) và gửi dữ liệu đi. connect() thực hiện kết nối ở Transport Layer.
+  * disconnect(): Phương thức này được sử dụng để đóng kết nối HTTP sau khi hoàn tất việc trao đổi dữ liệu. Nó giải phóng tài nguyên liên quan đến kết nối đó. Việc đóng kết nối này diễn ra ở Application Layer, nhưng nó cũng tác động đến Transport Layer để ngắt kết nối TCP vì connect được thiết lập ở Transport Layer.
+
+#### InputStream/OutputStream
+- Đều là phương thức để đọc/ghi từng byte
+- InputStream đọc các byte
+  - đọc từng byte dữ liệu một cách tuần tự từ đầu đến cuối file
+  - Cần chuyển đổi byte sang kiểu dữ liệu khác để đọc file
+  - Mỗi lần gọi read(): Phương thức này sẽ đọc một byte từ file và trả về giá trị int của byte đó
+  - Khi kết thúc file: Khi không còn dữ liệu nào để đọc (tức là đã đến cuối file), phương thức read() sẽ trả về giá trị -1. Đây là cách để biết rằng bạn đã đọc hết dữ liệu trong file.
+  - Luôn luôn đóng luồn đọc sau khi xử lí xong đọc file để giải phóng bộ nhớ, tài nguyên
+- OutputStream ghi các byte
+  - ghi từng byte dữ liệu một cách tuần tự từ đầu đến cuối file
+  - Cần chuyển đổi những kiểu dữ liệu khác sang byte để ghi vào file
+  - Mỗi lần gọi write(): Phương thức này sẽ ghi một byte vào file. Để ghi một byte, thì cần truyền một giá trị int vào phương thức write(). Giá trị int này sẽ được chuyển đổi thành byte và ghi vào file.
+  - Khi kết thúc file: Khi bạn đã ghi hết dữ liệu vào file, bạn cần gọi phương thức close() để đóng luồng ghi. Điều này sẽ giải phóng tài nguyên và đảm bảo rằng dữ liệu đã được ghi vào file.
+
+- Ngoài ra còn BufferedInputStream và BufferedOutputStream
+  - 2 phương thức là lớp con của InputStream và OutputStream
+  - Thì 2 lớp trên khác với InputStream và OutputStream ở chỗ là BufferedInputStream và BufferedOutputStream sử dụng bộ đệm để đọc và ghi dữ liệu từ file
+  - Nghĩa là với một dữ liệu từ file nó chuyển một lượng lớn dữ liệu vào bộ (thường kích thước bộ đệm là 8KB) và sau đó đọc từ bộ đệm đó thay vì đọc từ file trực tiếp
+  - Tương tục với đọc, ghi dữ liệu vào file thì nó sẽ ghi vào bộ đệm trước rồi mới ghi vào file
+
+#### Blocking/Non-blocking
+- Blocking: là luồng hay app phải dừng lại để đợi cho một cv nào đó được thực thi xong rồi mới được thực hiện tiếp
+  - Gây ra một số vấn đề như: thời gian chờ đợi hoàn thành toàn bộ công việc lâu ảnh hưởng perform máy, sẽ có một số task sẽ không liên quan gì tới tác hiện tại đang chạy những vẫn bị block, phân bố xử lí không phù hợp
+- Non-blocking: là luồng hay app hiện tại sẽ không bị chặn khi có một tác đang thực hiện, điều này giúp có thể xử lý thêm các tác khác trong lúc chờ tác kia chạy xong
+  - có một số cách để xử lý như : dùng nhiều thread phụ khác trong cùng một process để k làm ảnh hưởng tới thread chính, thậm chí có thể dùng nhiêu process khác nhau hoặc là đơn giản hơn một thread có thể chạy nhiều coroutine thì cũng được xem là mô hình non-blocking
+
+#### Handshake
+- Là quá trình thiết lập kết nối giữa hai hệ thống hoặc 2 thiết bị trước khi trao đổi dữ liệu. Để đảm bảo rằng 2 bên đều đồng ý và sẵn sàng nhận dữ liệu
+- Mục đích chính của Handshake:
+  * Đồng bộ hóa: Đảm bảo cả hai bên hiểu và đồng ý về cách thức giao tiếp.
+  * Xác thực: Xác nhận danh tính của các bên tham gia kết nối (trong một số trường hợp).
+  * Thiết lập thông số: Thỏa thuận về các tham số kết nối như kích thước gói tin, phương thức mã hóa,...
+  * Khởi tạo kết nối an toàn: Đặc biệt quan trọng trong các giao thức bảo mật như TLS/SSL.
+- Thông thuông sẽ gồm có: Three-way handshake, Four-way handshake, SSL handshake
+  - Three-way handshake:
+    + Client gửi một gói tin SYN đến server để bắt đầu kết nối
+    + Server gửi một gói tin SYN-ACK để xác nhận và yêu cầu client xác nhận
+    + Client gửi một gói tin ACK để xác nhận và bắt đầu truyền dữ liệu
+  - Four-way handshake:
+    + Client gửi một gói tin FIN để kết thúc kết nối
+    + Server gửi một gói tin ACK để xác nhận
+    + Sau đó Server gửi tiếp một gói tin FIN để kết thúc kết nối
+    + Client gửi một gói tin ACK để xác nhận và đóng kết nối
+  - SSL handshake: 
+    + Client gửi một gói tin để yêu cầu kết nối an toàn
+    + Server phản hồi lại với server random và SSL certificate
+    + Client xác minh SSL certificate và tạo một pre-master secret
+    + Client và server sử dụng pre-master secret để tạo ra master secret và session key
+    + Client và server sử dụng session key để mã hóa và giải mã dữ liệu
+    + Cuối cùng client gửi một gói tin kết thúc để xác nhận kết nối an toàn
+    + Server phản hồi lại với một gói tin kết thúc để xác nhận kết nối an toàn
+    + Kết nối an toàn được thiết lập và dữ liệu được truyền tải an toàn
+
+#### Certificates
+- đóng vai trò quan trọng trong việc xác thực và mã hóa trong các kết nối an toàn.
+  - vơi 2 mục đích chính là xác thực và mã hóa
+    + Xác thực: giúp xác thực danh tính của một website hoặc một server.
+    + Mã hóa: Chứng chỉ số chứa khóa công khai (public key) được sử dụng để mã hóa dữ liệu trong quá trình handshake TLS.
+  - Cách thức hoạt động:
+    + Khi client kết nối đến server, server sẽ gửi chứng chỉ số của nó cho client.
+    + Client kiểm tra tính hợp lệ của chứng chỉ.
+    + Nếu chứng chỉ hợp lệ, client sẽ tiếp tục thiết lập kết nối an toàn. Nếu không, kết nối sẽ bị từ chối hoặc hiển thị cảnh báo cho người dùng.
