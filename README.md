@@ -369,6 +369,7 @@ Render giao diện là quá trình tạo và hiển thị khung hình từ ứng
 5. Tối ưu hóa Object Allocation & Garbage Collection
 - Kiểm soát việc phân bổ đối tượng: Tránh tạo ra quá nhiều đối tượng tạm thời, như trong các vòng lặp hoặc xử lý dữ liệu lớn. Có thể sử dụng Object Pooling cho những đối tượng được sử dụng nhiều lần.
 - Giảm thiểu việc sử dụng các đối tượng không cần thiết: Sử dụng các kiểu dữ liệu nguyên thủy thay vì đối tượng khi có thể.
+- Hạn chế sử dụng transparency ở mức độ cần thiết, và tối ưu hóa các lớp overlay để giảm tải cho hệ thống.
 - Giám sát và phân tích garbage collection: Sử dụng các công cụ như Android Profiler để theo dõi hoạt động garbage collection và việc phân bổ bộ nhớ.
 6. Tối ưu hóa UI Thread và RenderThread
 - Tránh thực hiện tác vụ nặng trên UI Thread: Chuyển các tác vụ nặng sang các thread khác hoặc sử dụng AsyncTask hoặc RxJava.
