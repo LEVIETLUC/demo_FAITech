@@ -58,7 +58,11 @@ class MainActivity : AppCompatActivity(), OnFeatureClickListener {
                 "\n- Nhập URL ảnh vào và hiển thị ảnh", "LoadImageActivity"),
             Feature("Parse JSON",
                 "- Parse JSON từ file" +
-                "\n- Và parse thành Map", "ParseJsonActivity"),
+                "\n- Và parse thành Map, sau đó convert ngược lại json mà không sử dụng lib có sẵn " +
+                "\n- Bằng các di duyệt theo các ký tự của cú pháp json để chỉ lấy ra key và value", "ParseJsonActivity"),
+            Feature("Handle File",
+                "- xử lý đọc file và ghi vào 10 file khác nhau từ file đó sử dụng InputStream/Outputstream " +
+                "\n- Kết hợp thêm buffered để truyền dữ liệu vào bộ đệm và đọc từ bộ đệm đó và seek trong lớp RandomAccessFile để có thể di chuyển con trỏ tới vị trì cần đọc ", "HandleFileActivity"),
 
         )
 
