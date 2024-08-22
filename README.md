@@ -319,9 +319,9 @@ Với TextView trong CustomView có thể thay thế BoringLayout bằng Dynamic
 ### Render
 Render giao diện là quá trình tạo và hiển thị khung hình từ ứng dụng lên màn hình. Để đảm bảo trải nghiệm người dùng mượt mà, ứng dụng phải render khung hình dưới 16ms để đạt 60 khung hình/giây (fps). Nếu ứng dụng vượt quá thời gian này, Choreographer sẽ bỏ qua khung hình đó(nghĩa là nếu khung hình render quá chậm thì thì Choreographer bỏ qua đoạn chậm đó để đi qua khung tiếp theo để đảm bảo kịp thời điểm cho khung hình tiếp theo) , dẫn đến hiện tượng giật (jank).
 #### Một số cách để theo dõi, phát hiện Jank:
-- Visual inspection: Kiểm tra các trường hợp sử dụng có jank trong giao diện bằng cách mở ứng dụng và thao tác qua các phần khác nhau, kèm theo đó là bật tính năng Profile GPU Rendering để thấy thời gian render của từng khung hình.
-- Systrace: Công cụ này cung cấp chi tiết về hoạt động của thiết bị và giúp phát hiện khung hình chậm. Systrace phân tích các quy trình và luồng, hiển thị màu sắc để nhận biết khung hình bị jank.
-- Custom performance monitoring: Khi không thể tái tạo jank trên thiết bị cục bộ, có thể sử dụng FrameMetricsAggregator và Firebase Performance Monitoring để theo dõi thời gian render.
+- **Visual inspection**: Kiểm tra các trường hợp sử dụng có jank trong giao diện bằng cách mở ứng dụng và thao tác qua các phần khác nhau, kèm theo đó là bật tính năng Profile GPU Rendering để thấy thời gian render của từng khung hình.
+- **Systrace**: Công cụ này cung cấp chi tiết về hoạt động của thiết bị và giúp phát hiện khung hình chậm. Systrace phân tích các quy trình và luồng, hiển thị màu sắc để nhận biết khung hình bị jank.
+- **Custom performance monitoring**: Khi không thể tái tạo jank trên thiết bị cục bộ, có thể sử dụng FrameMetricsAggregator và Firebase Performance Monitoring để theo dõi thời gian render.
 
 
 #### Slow frames vs Frozen frames vs ARNS
@@ -332,23 +332,23 @@ Render giao diện là quá trình tạo và hiển thị khung hình từ ứng
 
 #### Một số nguồn gây ra Jank phổ biến là
 
-* Danh sách cuộn (RecyclerView, ListView): Gây ra jank khi thực hiện những thao tác nặng trên UI thread.
-* RecyclerViews lồng nhau: Tối ưu hóa bằng cách chia sẻ RecyclerView.RecycledViewPool giữa các RecyclerView con.
-* RecyclerView: Too much inflation or Create is taking too long:
+* **Danh sách cuộn (RecyclerView, ListView)**: Gây ra jank khi thực hiện những thao tác nặng trên UI thread.
+* **RecyclerViews lồng nhau**: Tối ưu hóa bằng cách chia sẻ RecyclerView.RecycledViewPool giữa các RecyclerView con.
+* **RecyclerView**: Too much inflation or Create is taking too long:
   - Inflation: Đây là quá trình tạo ra các đối tượng View từ file XML. Nếu quá trình này diễn ra quá nhiều hoặc mất quá nhiều thời gian, nó có thể gây ra jank.
   - Create is taking too long: Việc khởi tạo View Holder hoặc View mới mất nhiều thời gian, dẫn đến việc giao diện không mượt mà.
-* RecyclerView: Bind taking too long: Đây là quá trình gắn dữ liệu vào View khi RecyclerView cần hiển thị một item. Nếu quá trình này mất nhiều thời gian, nó sẽ gây ra jank khi người dùng cuộn.
-* RecyclerView or ListView: Layout or draw taking too long:
+* **RecyclerView Bind taking too long**: Đây là quá trình gắn dữ liệu vào View khi RecyclerView cần hiển thị một item. Nếu quá trình này mất nhiều thời gian, nó sẽ gây ra jank khi người dùng cuộn.
+* **RecyclerView or ListView**: Layout or draw taking too long:
   - Layout: Quá trình tính toán kích thước và vị trí của các View trong một bố cục. Nếu layout mất quá nhiều thời gian, nó có thể gây Jank.
   - Draw: Đây là quá trình vẽ các View lên màn hình. Nếu quá trình này kéo dài, nó sẽ gây ra hiện tượng jank
 
-* ListView: Inflation: Tương tự như trong RecyclerView, đây là quá trình tạo ra các View từ file XML. Nếu việc này diễn ra quá nhiều hoặc quá chậm trong ListView, nó sẽ dẫn đến jank.
-* Layout performance: Đây là hiệu suất của quá trình bố cục (layout) của giao diện. Nếu việc layout diễn ra chậm, nó sẽ ảnh hưởng đến toàn bộ hiệu suất của giao diện và gây ra jan
-* Rendering performance: Đây là hiệu suất của quá trình vẽ giao diện lên màn hình. Nếu quá trình này không diễn ra mượt mà, nó sẽ gây ra jank và ảnh hưởng đến trải nghiệm người dùng.
-* Rendering performance: UI Thread: Đây là luồng chính chịu trách nhiệm quản lý và vẽ giao diện người dùng. Nếu UI Thread bị chặn hoặc hoạt động không hiệu quả, nó sẽ gây ra jank.
-* Rendering performance: RenderThread: Một luồng riêng biệt xử lý việc vẽ các khung hình của giao diện. Nếu RenderThread gặp vấn đề về hiệu suất, nó sẽ gây ra hiện tượng jank.
-* Thread scheduling delays: Các vấn đề liên quan đến việc sắp xếp và thực thi các luồng (threads). Nếu có sự chậm trễ trong việc thực thi các luồng cần thiết, nó sẽ gây ra jank.
-* Object allocation and garbage collection
+* **ListView Inflation**: Tương tự như trong RecyclerView, đây là quá trình tạo ra các View từ file XML. Nếu việc này diễn ra quá nhiều hoặc quá chậm trong ListView, nó sẽ dẫn đến jank.
+* **Layout performance**: Đây là hiệu suất của quá trình bố cục (layout) của giao diện. Nếu việc layout diễn ra chậm, nó sẽ ảnh hưởng đến toàn bộ hiệu suất của giao diện và gây ra jan
+* **Rendering performance**: Đây là hiệu suất của quá trình vẽ giao diện lên màn hình. Nếu quá trình này không diễn ra mượt mà, nó sẽ gây ra jank và ảnh hưởng đến trải nghiệm người dùng.
+* **Rendering performance**: UI Thread: Đây là luồng chính chịu trách nhiệm quản lý và vẽ giao diện người dùng. Nếu UI Thread bị chặn hoặc hoạt động không hiệu quả, nó sẽ gây ra jank.
+* **Rendering performance**: RenderThread: Một luồng riêng biệt xử lý việc vẽ các khung hình của giao diện. Nếu RenderThread gặp vấn đề về hiệu suất, nó sẽ gây ra hiện tượng jank.
+* **Thread scheduling delays**: Các vấn đề liên quan đến việc sắp xếp và thực thi các luồng (threads). Nếu có sự chậm trễ trong việc thực thi các luồng cần thiết, nó sẽ gây ra jank.
+* **Object allocation and garbage collection**
   - Object allocation: Quá trình phân bổ bộ nhớ cho các đối tượng mới. Nếu việc phân bổ quá nhiều hoặc diễn ra không hiệu quả, nó sẽ gây ra jank.
   - Garbage collection: Quá trình thu hồi bộ nhớ không sử dụng. Nếu quá trình này diễn ra quá thường xuyên hoặc mất nhiều thời gian, nó sẽ gây ra jank do việc tạm dừng các hoạt động khác
 
