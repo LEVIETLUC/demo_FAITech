@@ -16,6 +16,7 @@
 * [Service](#Service)
 * [JSON](#JSON)
 * [HTTP](#HTTP)
+* [Render](#Render)
 
 ## XML vs Jetpack Compose
 
@@ -228,12 +229,16 @@ Với TextView trong CustomView có thể thay thế BoringLayout bằng Dynamic
   + POST: gửi dữ liệu lên server
   + PUT: cập nhật dữ liệu lên server
   + DELETE: xóa dữ liệu trên server
+- ResponseCode tương tự như cờ hiệu thể hiện trạng thái mà một máy chủ gửi về để đáp lại yêu cầu HTTP từ máy khách. Nó cho biết kết quả của việc xử lý yêu cầu. Một số đầu ResponseCode
+<img width="153" alt="image" src="https://github.com/user-attachments/assets/5084713a-50d4-4d24-a1cf-3e8935655773">
+
 #### Luồng hoạt động của HTTPConnection
 - gán một url sau đó thực hiện openConnection để thiết lập kết nối với server bằng url
 - Đặt nó trong khối lệnh try catch để có thề bắt lỗi
 - Khi mở connect thành công thì requestMethod cuối cùng sẽ kết nối với url đó và method đó
-- Nhận response và duyệt responseCode và dựa vào code đó thì sẽ xác định làm gì tiếp theo
-- ở finally thì cần có closeConnection để tránh làm tiêu tốn tài nguyên 
+- Bắt đầu truyền request dữ liệu qua cho server
+- Và đợi Nhận response và duyệt responseCode và dựa vào code đó thì sẽ xác định làm gì tiếp theo
+- ở finally thì cần có closeConnection để tránh làm tiêu tốn tài nguyên
 
 
 #### Đóng/Mở connection
@@ -299,7 +304,77 @@ Với TextView trong CustomView có thể thay thế BoringLayout bằng Dynamic
   - vơi 2 mục đích chính là xác thực và mã hóa
     + Xác thực: giúp xác thực danh tính của một website hoặc một server.
     + Mã hóa: Chứng chỉ số chứa khóa công khai (public key) được sử dụng để mã hóa dữ liệu trong quá trình handshake TLS.
+  - Cấu trúc của một certifiate:
+    + Subject: Thông thường là tên miền của máy chủ.
+    + Issuer: Thông tin về CA đã cấp chứng chỉ.
+    + Validity: Thời gian hiệu lực của chứng chỉ (từ ngày bắt đầu đến ngày kết thúc).
+    + Public Key: Khóa công khai của máy chủ.
+    + Signature Algorithm: Thuật toán được sử dụng để tạo chữ ký số của CA.
+    + Digital Signature: Chữ ký số của CA, được tạo bằng cách mã hóa một hash của chứng chỉ bằng khóa riêng của CA.
   - Cách thức hoạt động:
     + Khi client kết nối đến server, server sẽ gửi chứng chỉ số của nó cho client.
     + Client kiểm tra tính hợp lệ của chứng chỉ.
     + Nếu chứng chỉ hợp lệ, client sẽ tiếp tục thiết lập kết nối an toàn. Nếu không, kết nối sẽ bị từ chối hoặc hiển thị cảnh báo cho người dùng.
+
+### Render
+Render giao diện là quá trình tạo và hiển thị khung hình từ ứng dụng lên màn hình. Để đảm bảo trải nghiệm người dùng mượt mà, ứng dụng phải render khung hình dưới 16ms để đạt 60 khung hình/giây (fps). Nếu ứng dụng vượt quá thời gian này, Choreographer sẽ bỏ qua khung hình đó(nghĩa là nếu khung hình render quá chậm thì thì Choreographer bỏ qua đoạn chậm đó để đi qua khung tiếp theo để đảm bảo kịp thời điểm cho khung hình tiếp theo) , dẫn đến hiện tượng giật (jank).
+#### Một số cách để theo dõi, phát hiện Jank:
+- Visual inspection: Kiểm tra các trường hợp sử dụng có jank trong giao diện bằng cách mở ứng dụng và thao tác qua các phần khác nhau, kèm theo đó là bật tính năng Profile GPU Rendering để thấy thời gian render của từng khung hình.
+- Systrace: Công cụ này cung cấp chi tiết về hoạt động của thiết bị và giúp phát hiện khung hình chậm. Systrace phân tích các quy trình và luồng, hiển thị màu sắc để nhận biết khung hình bị jank.
+- Custom performance monitoring: Khi không thể tái tạo jank trên thiết bị cục bộ, có thể sử dụng FrameMetricsAggregator và Firebase Performance Monitoring để theo dõi thời gian render.
+
+
+#### Slow frames vs Frozen frames vs ARNS
+| So sánh        | Slow frames                                                                                          | Frozen frames                                                                             | ANRS                                                                                                                           |
+|----------------|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| Rendering time | từ 16ms đến 700ms                                                                                    | từ 700ms đến 5s                                                                           | trên 5s                                                                                                                        |
+| Visible user impact area | - Khi một RecyclerView cuộn một cách đột ngột</br> - giao diện có hoạt ảnh hoạt động không đúng cách | -  Trong quá trình khởi động app</br> - Hay khi chuyển từ màn hình này sang màn hình khác | - Là khi hoạt sự kiện chạm hay bấm nút không được phản hồi trong vòng 5s ngay cả khi không có hoạt động nào khác chạy trước đó |
+
+#### Một số nguồn gây ra Jank phổ biến là
+
+* Danh sách cuộn (RecyclerView, ListView): Gây ra jank khi thực hiện những thao tác nặng trên UI thread.
+* RecyclerViews lồng nhau: Tối ưu hóa bằng cách chia sẻ RecyclerView.RecycledViewPool giữa các RecyclerView con.
+* RecyclerView: Too much inflation or Create is taking too long:
+  - Inflation: Đây là quá trình tạo ra các đối tượng View từ file XML. Nếu quá trình này diễn ra quá nhiều hoặc mất quá nhiều thời gian, nó có thể gây ra jank.
+  - Create is taking too long: Việc khởi tạo View Holder hoặc View mới mất nhiều thời gian, dẫn đến việc giao diện không mượt mà.
+* RecyclerView: Bind taking too long: Đây là quá trình gắn dữ liệu vào View khi RecyclerView cần hiển thị một item. Nếu quá trình này mất nhiều thời gian, nó sẽ gây ra jank khi người dùng cuộn.
+* RecyclerView or ListView: Layout or draw taking too long:
+  - Layout: Quá trình tính toán kích thước và vị trí của các View trong một bố cục. Nếu layout mất quá nhiều thời gian, nó có thể gây Jank.
+  - Draw: Đây là quá trình vẽ các View lên màn hình. Nếu quá trình này kéo dài, nó sẽ gây ra hiện tượng jank
+
+* ListView: Inflation: Tương tự như trong RecyclerView, đây là quá trình tạo ra các View từ file XML. Nếu việc này diễn ra quá nhiều hoặc quá chậm trong ListView, nó sẽ dẫn đến jank.
+* Layout performance: Đây là hiệu suất của quá trình bố cục (layout) của giao diện. Nếu việc layout diễn ra chậm, nó sẽ ảnh hưởng đến toàn bộ hiệu suất của giao diện và gây ra jan
+* Rendering performance: Đây là hiệu suất của quá trình vẽ giao diện lên màn hình. Nếu quá trình này không diễn ra mượt mà, nó sẽ gây ra jank và ảnh hưởng đến trải nghiệm người dùng.
+* Rendering performance: UI Thread: Đây là luồng chính chịu trách nhiệm quản lý và vẽ giao diện người dùng. Nếu UI Thread bị chặn hoặc hoạt động không hiệu quả, nó sẽ gây ra jank.
+* Rendering performance: RenderThread: Một luồng riêng biệt xử lý việc vẽ các khung hình của giao diện. Nếu RenderThread gặp vấn đề về hiệu suất, nó sẽ gây ra hiện tượng jank.
+* Thread scheduling delays: Các vấn đề liên quan đến việc sắp xếp và thực thi các luồng (threads). Nếu có sự chậm trễ trong việc thực thi các luồng cần thiết, nó sẽ gây ra jank.
+* Object allocation and garbage collection
+  - Object allocation: Quá trình phân bổ bộ nhớ cho các đối tượng mới. Nếu việc phân bổ quá nhiều hoặc diễn ra không hiệu quả, nó sẽ gây ra jank.
+  - Garbage collection: Quá trình thu hồi bộ nhớ không sử dụng. Nếu quá trình này diễn ra quá thường xuyên hoặc mất nhiều thời gian, nó sẽ gây ra jank do việc tạm dừng các hoạt động khác
+
+#### Một số cách giảm thiểu Jank
+1. Tối ưu hóa Inflation
+  - Sử dụng ViewHolder Pattern: Đảm bảo bạn đang sử dụng ViewHolder pattern để giảm thiểu số lần gọi findViewById(). Điều này sẽ giúp bạn tránh việc inflate lại các view không cần thiết.
+  - Sử dụng LayoutInflater: Inflate layout chỉ một lần và sử dụng lại chúng bằng cách lưu trữ vào ViewHolder.
+  - Sử dụng getViewTypeCount() và getItemViewType(): Nếu có các kiểu item khác nhau trong RecyclerView hoặc ListView, hãy sử dụng các phương thức này để tái sử dụng view và giảm thiểu quá trình inflation.
+2. Tối ưu hóa Data Binding
+- Giảm tác vụ nặng trong onBindViewHolder() hoặc getView(): Tránh thực hiện các tác vụ nặng như tính toán phức tạp hay truy cập mạng trong các phương thức này. Chuyển những tác vụ đó ra ngoài và sử dụng dữ liệu đã được chuẩn bị trước.
+- Tránh tạo đối tượng mới trong onBindViewHolder() hoặc getView(): Thay vì tạo mới, cố gắng tái sử dụng các đối tượng đã có.
+3. Tối ưu hóa Layout Performance
+- Giảm độ phức tạp của layout: Giảm số lượng view con trong một layout, sử dụng ConstraintLayout hoặc FrameLayout để tăng hiệu suất layout.
+- Kiểm tra layout hierarchy: Sử dụng công cụ layout inspector để theo dõi và tối ưu hóa cấu trúc layout.
+4. Tối ưu hóa Rendering Performance
+- Giảm số lần lặp vẽ: Tránh việc vẽ lại view không cần thiết. Sử dụng setHasTransientState(true) cho các view tạm thời không thay đổi.
+- Sử dụng chế độ vẽ offscreen (đối với đối tượng lớn): Sử dụng canvas để vẽ những đối tượng lớn trước, nếu có thể, để làm giảm độ tốn tài nguyên quá mức khi phải render nhiều lần.
+5. Tối ưu hóa Object Allocation & Garbage Collection
+- Kiểm soát việc phân bổ đối tượng: Tránh tạo ra quá nhiều đối tượng tạm thời, như trong các vòng lặp hoặc xử lý dữ liệu lớn. Có thể sử dụng Object Pooling cho những đối tượng được sử dụng nhiều lần.
+- Giảm thiểu việc sử dụng các đối tượng không cần thiết: Sử dụng các kiểu dữ liệu nguyên thủy thay vì đối tượng khi có thể.
+- Giám sát và phân tích garbage collection: Sử dụng các công cụ như Android Profiler để theo dõi hoạt động garbage collection và việc phân bổ bộ nhớ.
+6. Tối ưu hóa UI Thread và RenderThread
+- Tránh thực hiện tác vụ nặng trên UI Thread: Chuyển các tác vụ nặng sang các thread khác hoặc sử dụng AsyncTask hoặc RxJava.
+- Quản lý Thread schedule: Sử dụng các thư viện như Kotlin Coroutines hoặc Java ExecutorService để dễ dàng quản lý và tổ chức các tác vụ trên các thread.
+7. Tối ưu hoá pin tiêu thụ
+- Sử dụng các công cụ như Battery Historian để theo dõi và phân tích việc tiêu thụ pin của ứng dụng.
+- Dùng JobScheduler để lên lịch các tác vụ nặng vào thời điểm thích hợp(như xử lí các tác vụ nặng khi thiết bị đang cắm sạc), giảm thiểu tiêu thụ pin.
+8. Sử dụng Paging
+- Tối ưu hóa quá trình tải dữ liệu: Khi làm việc với tập dữ liệu lớn, hãy sử dụng Paging Library để tải dữ liệu theo trang và chỉ tải những dữ liệu cần thiết.
