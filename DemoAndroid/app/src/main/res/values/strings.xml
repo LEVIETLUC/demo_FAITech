@@ -20,4 +20,8 @@
     <string name="tv_parsejson">ParseJSON</string>
     <string name="json_parser">JSON Parser</string>
     <string name="format_json">Format Json</string>
+    <string name="data_read_from_file_txt">Data read from file</string>
+    <string name="cut_file_sequentially_btn">Cut File Sequentially</string>
+    <string name="cut_file_non_sequentially_btn">Cut File Non-Sequentially</string>
+    <string name="path_file_output">Path file output:</string>
 </resources>
