@@ -343,8 +343,8 @@ Render giao diện là quá trình tạo và hiển thị khung hình từ ứng
   - Draw: Đây là quá trình vẽ các View lên màn hình. Nếu quá trình này kéo dài, nó sẽ gây ra hiện tượng jank
 
 * **ListView Inflation**: Tương tự như trong RecyclerView, đây là quá trình tạo ra các View từ file XML. Nếu việc này diễn ra quá nhiều hoặc quá chậm trong ListView, nó sẽ dẫn đến jank.
-* **Layout performance**: Đây là hiệu suất của quá trình bố cục (layout) của giao diện. Nếu việc layout diễn ra chậm, nó sẽ ảnh hưởng đến toàn bộ hiệu suất của giao diện và gây ra jan
-* **Rendering performance**: Đây là hiệu suất của quá trình vẽ giao diện lên màn hình. Nếu quá trình này không diễn ra mượt mà, nó sẽ gây ra jank và ảnh hưởng đến trải nghiệm người dùng.
+* **Layout performance**: Đây là hiệu suất của quá trình bố cục (layout) của giao diện. Khi mà Layout Hierarchy quá phức tạp. Nếu việc layout diễn ra chậm, nó sẽ ảnh hưởng đến toàn bộ hiệu suất của giao diện và gây ra jan
+* **Rendering performance**: Đây là hiệu suất của quá trình vẽ giao diện lên màn hình. Có thể xảy ra tình trạng Overdraw khi các pixel trên màn hình bị vẽ lại nhiều lần trong một khung hình. Nếu quá trình này không diễn ra mượt mà, nó sẽ gây ra jank và ảnh hưởng đến trải nghiệm người dùng.
 * **Rendering performance**: UI Thread: Đây là luồng chính chịu trách nhiệm quản lý và vẽ giao diện người dùng. Nếu UI Thread bị chặn hoặc hoạt động không hiệu quả, nó sẽ gây ra jank.
 * **Rendering performance**: RenderThread: Một luồng riêng biệt xử lý việc vẽ các khung hình của giao diện. Nếu RenderThread gặp vấn đề về hiệu suất, nó sẽ gây ra hiện tượng jank.
 * **Thread scheduling delays**: Các vấn đề liên quan đến việc sắp xếp và thực thi các luồng (threads). Nếu có sự chậm trễ trong việc thực thi các luồng cần thiết, nó sẽ gây ra jank.
