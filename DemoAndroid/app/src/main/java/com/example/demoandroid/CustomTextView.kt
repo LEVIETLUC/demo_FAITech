@@ -27,33 +27,32 @@ class CustomTextView @JvmOverloads constructor(
         get() = textPaint.textSize
         set(value) {
             textPaint.textSize = value
-            requestLayout()  // Text size changed, we might need to re-measure
-            invalidate()     // Redraw the view with the new text size
+            requestLayout()
+            invalidate()
         }
     var layoutGravity: Int = Gravity.NO_GRAVITY
 
 
     fun setText(text: String) {
         this.text = text
-        requestLayout()  // Text changed, we might need to re-measure
-        invalidate()     // Redraw the view with the new text
+        requestLayout()
+        invalidate()
     }
 
     fun setTextColor(color: Int) {
         textPaint.color = color
-        invalidate()  // Redraw the view with the new text color
+        invalidate()
     }
 
     fun setFontStyle(style: Int) {
         textPaint.typeface = Typeface.defaultFromStyle(style)
-        invalidate()  // Redraw the view with the new font style
+        invalidate()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val widthMode = MeasureSpec.getMode(widthMeasureSpec)
         val widthSize = MeasureSpec.getSize(widthMeasureSpec)
 
-        // Calculate width based on BoringLayout metrics
         val metrics = BoringLayout.isBoring(text, textPaint)
         if (metrics != null) {
             val width = if (widthMode == MeasureSpec.EXACTLY) {
@@ -61,8 +60,6 @@ class CustomTextView @JvmOverloads constructor(
             } else {
                 Math.min(metrics.width, widthSize)
             }
-
-            // Calculate height based on text paint font metrics
             val fontMetrics = textPaint.fontMetrics
             val height = (fontMetrics.bottom - fontMetrics.top).toInt()
 
@@ -77,7 +74,6 @@ class CustomTextView @JvmOverloads constructor(
 
         val metrics = BoringLayout.isBoring(text, textPaint)
         if (metrics != null) {
-            // Create BoringLayout if it hasn't been created or if the text has changed
             if (boringLayout == null || boringLayout?.text != text) {
                 boringLayout = BoringLayout.make(
                     text, textPaint, width, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, metrics, false
@@ -86,8 +82,6 @@ class CustomTextView @JvmOverloads constructor(
 
             boringLayout?.draw(canvas)
         } else {
-            // Fallback to drawing with Canvas if BoringLayout is not used
-            // Use measuredHeight instead of height
             canvas.drawText(text, 10f, measuredHeight / 2f, textPaint)
         }
     }
