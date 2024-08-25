@@ -63,6 +63,9 @@ class MainActivity : AppCompatActivity(), OnFeatureClickListener {
             Feature("Handle File",
                 "- xử lý đọc file và ghi vào 10 file khác nhau từ file đó sử dụng InputStream/Outputstream " +
                 "\n- Kết hợp thêm buffered để truyền dữ liệu vào bộ đệm và đọc từ bộ đệm đó và seek trong lớp RandomAccessFile để có thể di chuyển con trỏ tới vị trì cần đọc ", "HandleFileActivity"),
+            Feature("Json to View",
+                "- Parse Json thành UI" +
+                "\n- Đọc file json và parse thành view, sau", "JsonToViewActivity"),
 
         )
 
