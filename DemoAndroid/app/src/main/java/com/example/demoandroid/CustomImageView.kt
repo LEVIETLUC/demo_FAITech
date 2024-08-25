@@ -25,4 +25,15 @@ class CustomImageView @JvmOverloads constructor(
             canvas.drawBitmap(it, 0f, 0f, paint)
         }
     }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        setMeasuredDimension(bitmap?.width ?: 0, bitmap?.height ?: 0)
+    }
+
+    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+        super.onLayout(changed, left, top, right, bottom)
+        // Recalculate position based on gravity
+        invalidate()
+    }
 }

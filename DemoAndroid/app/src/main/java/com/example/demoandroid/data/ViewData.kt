@@ -8,7 +8,8 @@ data class ViewProps(
     val layoutGravity: Int?,
     val orientation: Int?,
     val layoutType: Int?,
-    val textView: TextView?
+    val textView: TextView?,
+    val imageView: ImageView?,
 )
 
 data class Dimension(
@@ -23,14 +24,17 @@ data class Background(
 
 data class TextView(
     val text: String,
-    val textSize: Int,
+    val fontSize: Int,
+    val fontStyle :Int?,
     val color: String
+)
+
+data class ImageView(
+    val resource: String
 )
 
 data class ViewData(
     val viewType: Int,
     val props: ViewProps,
     val children: List<ViewData>?,
-    val text: String? = null,
-    val imageUrl: String? = null
 )

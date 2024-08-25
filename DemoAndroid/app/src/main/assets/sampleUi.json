@@ -11,10 +11,9 @@
         },
         "background": {
             "type": 1,
-            "color": "#AAAAAA"
+            "color": "#FFFFFF"
         },
-        "gravity":0,
-        "layoutGravity":0,
+        "gravity":4,
         "orientation":1,
         "layoutType": 1
     },
@@ -23,49 +22,233 @@
         "viewType": 1,
         "props":{
             "width":{
-                "value":200,
+                "value":1000,
                 "unit":-1
             },
             "height":{
-                "value":50,
+                "value":400,
                 "unit":-1
             },
             "background":{
                 "type": 1,
-                "color":"#FF0000"
+                "color":"#E0E0E0"
             }
         },
         "children": [
             {
                 "viewType":3,
                 "props":{
-                    "text":"Text Sample 1",
-                    "fontSize":18,
-                    "color":"#FFFFFF"
+                    "width":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "height":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "textView": {
+                        "text": "Text Sample 1",
+                        "fontSize": 60,
+                        "color": "#000000"
+                    }
                 }
             },
             {
                 "viewType":3,
                 "props":{
-                    "text":"Text Sample 2",
-                    "fontSize":18,
-                    "color":"#FFFFFF"
+                    "width":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "height":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "textView": {
+                        "text": "Text Sample 2",
+                        "fontSize": 60,
+                        "color": "#000000"
+                    }
                 }
             },
             {
                 "viewType":3,
                 "props":{
-                    "text":"Text Sample 3",
-                    "fontSize":18,
-                    "color":"#FFFFFF"
+                    "width":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "height":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "textView": {
+                        "text": "Text Sample 3",
+                        "fontSize": 60,
+                        "color": "#000000"
+                    }
                 }
             },
             {
                 "viewType":3,
                 "props":{
-                    "text":"Text Sample 4",
-                    "fontSize":18,
-                    "color":"#FFFFFF"
+                    "width":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "height":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "textView": {
+                        "text": "Text Sample 4",
+                        "fontSize": 60,
+                        "color": "#000000"
+                    }
+                }
+            },
+            {
+                "viewType":3,
+                "props":{
+                    "width":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "height":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "textView": {
+                        "text": "Text Sample 5",
+                        "fontSize": 60,
+                        "color": "#000000"
+                    }
+                }
+            },
+            {
+                "viewType":3,
+                "props":{
+                    "width":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "height":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "textView": {
+                        "text": "Text Sample 6",
+                        "fontSize": 60,
+                        "color": "#000000"
+                    }
+                }
+            },
+            {
+                "viewType":3,
+                "props":{
+                    "width":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "height":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "textView": {
+                        "text": "Text Sample 7",
+                        "fontSize": 60,
+                        "color": "#000000"
+                    }
+                }
+            },
+            {
+                "viewType":3,
+                "props":{
+                    "width":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "height":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "textView": {
+                        "text": "Text Sample 8",
+                        "fontSize": 60,
+                        "color": "#000000"
+                    }
+                }
+            },
+            {
+                "viewType":3,
+                "props":{
+                    "width":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "height":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "textView": {
+                        "text": "Text Sample 9",
+                        "fontSize": 60,
+                        "color": "#000000"
+                    }
+                }
+            },
+            {
+                "viewType":3,
+                "props":{
+                    "width":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "height":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "textView": {
+                        "text": "Text Sample 10",
+                        "fontSize": 60,
+                        "color": "#000000"
+                    }
+                }
+            },
+            {
+                "viewType":3,
+                "props":{
+                    "width":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "height":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "textView": {
+                        "text": "Text Sample 11",
+                        "fontSize": 60,
+                        "color": "#000000"
+                    }
+                }
+            },
+            {
+                "viewType":3,
+                "props":{
+                    "width":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "height":{
+                        "value":-2,
+                        "unit":-1
+                    },
+                    "textView": {
+                        "text": "Text Sample 12",
+                        "fontSize": 60,
+                        "color": "#000000"
+                    }
                 }
             }
         ]
@@ -73,16 +256,35 @@
     {
         "viewType": 3,
         "props":{
-            "text":"Hello World",
-            "fontSize":18,
-            "color":"#FFFFFF"
+            "width":{
+                "value":-2,
+                "unit":-1
+            },
+            "height":{
+                "value":-2,
+                "unit":-1
+            },
+            "textView": {
+                "text": "Hello world!",
+                "fontSize": 80,
+                "fontStyle": 3,
+                "color": "#000000"
+            }
         }
     },
     {
         "viewType":4,
         "props":{
-            "image": {
-                "resource": "res://icon.png"
+            "width":{
+                "value":-2,
+                "unit":-1
+            },
+            "height":{
+                "value":-2,
+                "unit":-1
+            },
+            "imageView": {
+                "resource": "drawable/demo_img"
             }
         }
     }

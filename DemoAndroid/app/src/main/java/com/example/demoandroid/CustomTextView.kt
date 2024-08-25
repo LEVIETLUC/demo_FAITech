@@ -4,10 +4,12 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.Typeface
 import android.text.BoringLayout
 import android.text.Layout
 import android.text.TextPaint
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.View
 
 class CustomTextView @JvmOverloads constructor(
@@ -28,6 +30,8 @@ class CustomTextView @JvmOverloads constructor(
             requestLayout()  // Text size changed, we might need to re-measure
             invalidate()     // Redraw the view with the new text size
         }
+    var layoutGravity: Int = Gravity.NO_GRAVITY
+
 
     fun setText(text: String) {
         this.text = text
@@ -38,6 +42,11 @@ class CustomTextView @JvmOverloads constructor(
     fun setTextColor(color: Int) {
         textPaint.color = color
         invalidate()  // Redraw the view with the new text color
+    }
+
+    fun setFontStyle(style: Int) {
+        textPaint.typeface = Typeface.defaultFromStyle(style)
+        invalidate()  // Redraw the view with the new font style
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -79,7 +88,7 @@ class CustomTextView @JvmOverloads constructor(
         } else {
             // Fallback to drawing with Canvas if BoringLayout is not used
             // Use measuredHeight instead of height
-            canvas?.drawText(text, 10f, measuredHeight / 2f, textPaint)
+            canvas.drawText(text, 10f, measuredHeight / 2f, textPaint)
         }
     }
 }

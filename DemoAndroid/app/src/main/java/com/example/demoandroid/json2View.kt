@@ -7,7 +7,10 @@ import org.json.JSONObject
 
 fun parseJsonToViewData(json: String): ViewData? {
     val jsonObject = JSONObject(json)
-    Log.d("JsonToViewActivity", "jsonObject: $jsonObject")
+    if (jsonObject.has("props")) {
+        parseViewProps(jsonObject.getJSONObject("props"))
+        Log.d("JsonToViewActivity", "props: ${jsonObject.getJSONObject("props")}")
+    }
     return parseViewData(jsonObject)
 }
 
@@ -22,9 +25,11 @@ private fun parseViewData(jsonObject: JSONObject): ViewData? {
 }
 
 private fun parseViewProps(jsonObject: JSONObject): ViewProps {
+    Log.d("JsonToViewActivity", "jsonObject: ${jsonObject.getJSONObject("width")}")
     val width = jsonObject.getJSONObject("width").let {
         Dimension(it.getInt("value"), it.getInt("unit"))
     }
+    Log.d("JsonToViewActivity", "jsonObject: $width")
     val height = jsonObject.getJSONObject("height").let {
         Dimension(it.getInt("value"), it.getInt("unit"))
     }
@@ -40,10 +45,13 @@ private fun parseViewProps(jsonObject: JSONObject): ViewProps {
     val layoutType = if (jsonObject.has("layoutType")) jsonObject.getInt("layoutType") else null
     val textView = if (jsonObject.has("textView")) {
         jsonObject.getJSONObject("textView").let {
-            TextView(it.getString("text"), it.getInt("textSize"), it.getString("color"))
+            TextView(it.getString("text"), it.getInt("fontSize"), if (it.has("fontStyle")) it.getInt("fontStyle") else 0, it.getString("color"))
         }
     } else null
-    return ViewProps(width, height, background, gravity, layoutGravity, orientation, layoutType, textView)
+    val imageView = if (jsonObject.has("imageView")) {
+        ImageView(jsonObject.getJSONObject("imageView").getString("resource"))
+    } else null
+    return ViewProps(width, height, background, gravity, layoutGravity, orientation, layoutType, textView, imageView )
 }
 
 private fun parseChildren(jsonArray: JSONArray): List<ViewData> {
