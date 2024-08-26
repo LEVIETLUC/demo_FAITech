@@ -9,7 +9,6 @@ import android.text.BoringLayout
 import android.text.Layout
 import android.text.TextPaint
 import android.util.AttributeSet
-import android.view.Gravity
 import android.view.View
 
 class CustomTextView @JvmOverloads constructor(
@@ -20,6 +19,7 @@ class CustomTextView @JvmOverloads constructor(
     private val textPaint = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.BLACK
         textSize = 50f
+        typeface = Typeface.DEFAULT
     }
     private var boringLayout: BoringLayout? = null
 
@@ -30,8 +30,6 @@ class CustomTextView @JvmOverloads constructor(
             requestLayout()
             invalidate()
         }
-    var layoutGravity: Int = Gravity.NO_GRAVITY
-
 
     fun setText(text: String) {
         this.text = text
@@ -76,7 +74,7 @@ class CustomTextView @JvmOverloads constructor(
         if (metrics != null) {
             if (boringLayout == null || boringLayout?.text != text) {
                 boringLayout = BoringLayout.make(
-                    text, textPaint, width, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, metrics, false
+                    text, textPaint, width, Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, metrics, false
                 )
             }
 
