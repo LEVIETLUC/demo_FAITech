@@ -11,248 +11,304 @@
         },
         "background": {
             "type": 1,
-            "color": "#FFFFFF"
+            "color": "#fff4fc"
         },
         "gravity":4,
         "orientation":1,
         "layoutType": 1
     },
     "children": [
-    {
-        "viewType": 1,
-        "props":{
-            "width":{
-                "value":1000,
-                "unit":-1
+        {
+            "viewType": 1,
+            "props":{
+                "width":{
+                    "value":1200,
+                    "unit":-1
+                },
+                "height":{
+                    "value":800,
+                    "unit":-1
+                },
+                "background":{
+                    "type": 1,
+                    "color":"#E0E0E0"
+                },
+                "layoutGravity": 4
             },
-            "height":{
-                "value":400,
-                "unit":-1
-            },
-            "background":{
-                "type": 1,
-                "color":"#E0E0E0"
+            "children": [
+                {
+                    "viewType":3,
+                    "props":{
+                        "width":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "height":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "layoutGravity": 4,
+                        "textView": {
+                            "text": "Text Sample 1",
+                            "fontSize": 60,
+                            "color": "#000000"
+                        }
+                    }
+                },
+                {
+                    "viewType":4,
+                    "props":{
+                        "width":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "height":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "layoutGravity": 4,
+                        "imageView": {
+                            "resource": "drawable/demo_img"
+                        }
+                    }
+                },
+                {
+                    "viewType":3,
+                    "props":{
+                        "width":{
+                            "value":-1,
+                            "unit":-1
+                        },
+                        "height":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "layoutGravity": 4,
+                        "textView": {
+                            "text": "Text Sample 3",
+                            "fontSize": 60,
+                            "color": "#000000"
+                        }
+                    }
+                },
+                {
+                    "viewType":3,
+                    "props":{
+                        "width":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "height":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "layoutGravity": 4,
+                        "textView": {
+                            "text": "Text Sample 4",
+                            "fontSize": 60,
+                            "color": "#000000"
+                        }
+                    }
+                },
+                {
+                    "viewType":4,
+                    "props":{
+                        "width":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "height":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "layoutGravity": 4,
+                        "imageView": {
+                            "resource": "drawable/demo_img"
+                        }
+                    }
+                },
+                {
+                    "viewType":3,
+                    "props":{
+                        "width":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "height":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "layoutGravity": 4,
+                        "textView": {
+                            "text": "Text Sample 6",
+                            "fontSize": 60,
+                            "color": "#000000"
+                        }
+                    }
+                },                {
+                    "viewType":3,
+                    "props":{
+                        "width":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "height":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "layoutGravity": 4,
+                        "textView": {
+                            "text": "Text Sample 7",
+                            "fontSize": 60,
+                            "color": "#000000"
+                        }
+                    }
+                },
+                {
+                    "viewType":4,
+                    "props":{
+                        "width":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "height":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "layoutGravity": 4,
+                        "imageView": {
+                            "resource": "drawable/demo_img"
+                        }
+                    }
+                },
+                {
+                    "viewType":3,
+                    "props":{
+                        "width":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "height":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "layoutGravity": 4,
+                        "textView": {
+                            "text": "Text Sample 8",
+                            "fontSize": 60,
+                            "color": "#000000"
+                        }
+                    }
+                },
+                {
+                    "viewType":4,
+                    "props":{
+                        "width":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "height":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "layoutGravity": 4,
+                        "imageView": {
+                            "resource": "drawable/demo_img"
+                        }
+                    }
+                },
+                {
+                    "viewType":4,
+                    "props":{
+                        "width":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "height":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "layoutGravity": 4,
+                        "imageView": {
+                            "resource": "drawable/demo_img"
+                        }
+                    }
+                },
+                {
+                    "viewType":3,
+                    "props":{
+                        "width":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "height":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "layoutGravity": 4,
+                        "textView": {
+                            "text": "Text Sample 11",
+                            "fontSize": 60,
+                            "color": "#000000"
+                        }
+                    }
+                },
+                {
+                    "viewType":4,
+                    "props":{
+                        "width":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "height":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "layoutGravity": 4,
+                        "imageView": {
+                            "resource": "drawable/demo_img"
+                        }
+                    }
+                },
+                {
+                    "viewType":3,
+                    "props":{
+                        "width":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "height":{
+                            "value":-2,
+                            "unit":-1
+                        },
+                        "layoutGravity": 4,
+                        "textView": {
+                            "text": "Text Sample 12",
+                            "fontSize": 60,
+                            "color": "#000000"
+                        }
+                    }
+                }
+            ]
+        },
+
+        {
+            "viewType":4,
+            "props":{
+                "width":{
+                    "value":-2,
+                    "unit":-1
+                },
+                "height":{
+                    "value":-2,
+                    "unit":-1
+                },
+                "layoutGravity": 4,
+                "imageView": {
+                    "resource": "drawable/demo_img"
+                }
             }
         },
-        "children": [
-            {
-                "viewType":3,
-                "props":{
-                    "width":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "height":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "textView": {
-                        "text": "Text Sample 1",
-                        "fontSize": 60,
-                        "color": "#000000"
-                    }
-                }
-            },
-            {
-                "viewType":3,
-                "props":{
-                    "width":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "height":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "textView": {
-                        "text": "Text Sample 2",
-                        "fontSize": 60,
-                        "color": "#000000"
-                    }
-                }
-            },
-            {
-                "viewType":3,
-                "props":{
-                    "width":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "height":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "textView": {
-                        "text": "Text Sample 3",
-                        "fontSize": 60,
-                        "color": "#000000"
-                    }
-                }
-            },
-            {
-                "viewType":3,
-                "props":{
-                    "width":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "height":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "textView": {
-                        "text": "Text Sample 4",
-                        "fontSize": 60,
-                        "color": "#000000"
-                    }
-                }
-            },
-            {
-                "viewType":3,
-                "props":{
-                    "width":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "height":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "textView": {
-                        "text": "Text Sample 5",
-                        "fontSize": 60,
-                        "color": "#000000"
-                    }
-                }
-            },
-            {
-                "viewType":3,
-                "props":{
-                    "width":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "height":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "textView": {
-                        "text": "Text Sample 6",
-                        "fontSize": 60,
-                        "color": "#000000"
-                    }
-                }
-            },
-            {
-                "viewType":3,
-                "props":{
-                    "width":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "height":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "textView": {
-                        "text": "Text Sample 7",
-                        "fontSize": 60,
-                        "color": "#000000"
-                    }
-                }
-            },
-            {
-                "viewType":3,
-                "props":{
-                    "width":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "height":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "textView": {
-                        "text": "Text Sample 8",
-                        "fontSize": 60,
-                        "color": "#000000"
-                    }
-                }
-            },
-            {
-                "viewType":3,
-                "props":{
-                    "width":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "height":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "textView": {
-                        "text": "Text Sample 9",
-                        "fontSize": 60,
-                        "color": "#000000"
-                    }
-                }
-            },
-            {
-                "viewType":3,
-                "props":{
-                    "width":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "height":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "textView": {
-                        "text": "Text Sample 10",
-                        "fontSize": 60,
-                        "color": "#000000"
-                    }
-                }
-            },
-            {
-                "viewType":3,
-                "props":{
-                    "width":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "height":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "textView": {
-                        "text": "Text Sample 11",
-                        "fontSize": 60,
-                        "color": "#000000"
-                    }
-                }
-            },
-            {
-                "viewType":3,
-                "props":{
-                    "width":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "height":{
-                        "value":-2,
-                        "unit":-1
-                    },
-                    "textView": {
-                        "text": "Text Sample 12",
-                        "fontSize": 60,
-                        "color": "#000000"
-                    }
-                }
-            }
-        ]
-    },
     {
         "viewType": 3,
         "props":{
@@ -264,6 +320,7 @@
                 "value":-2,
                 "unit":-1
             },
+            "layoutGravity": 4,
             "textView": {
                 "text": "Hello world!",
                 "fontSize": 80,
@@ -271,22 +328,9 @@
                 "color": "#000000"
             }
         }
-    },
-    {
-        "viewType":4,
-        "props":{
-            "width":{
-                "value":-2,
-                "unit":-1
-            },
-            "height":{
-                "value":-2,
-                "unit":-1
-            },
-            "imageView": {
-                "resource": "drawable/demo_img"
-            }
-        }
     }
+
+
+
     ]
 }

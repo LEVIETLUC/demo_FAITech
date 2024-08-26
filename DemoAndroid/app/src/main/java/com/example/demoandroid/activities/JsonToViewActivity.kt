@@ -9,14 +9,14 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.demoandroid.CustomImageView
 import com.example.demoandroid.CustomTextView
-import com.example.demoandroid.adapters.TextViewAdapter
+import com.example.demoandroid.adapters.MultiTypeAdapter
 import com.example.demoandroid.data.Dimension
 import com.example.demoandroid.data.ViewData
 import com.example.demoandroid.parseJsonToViewData
@@ -73,32 +73,66 @@ class JsonToViewActivity : AppCompatActivity() {
                         setBackgroundColor(Color.parseColor(props.background?.color ?: "#FFFFFF"))
                     }
                     layoutManager = LinearLayoutManager(this@JsonToViewActivity)
-                    adapter = TextViewAdapter(viewData.children ?: listOf())
+                    adapter = MultiTypeAdapter(viewData.children ?: listOf())
                     val itemDecoration = DividerItemDecoration(this@JsonToViewActivity, DividerItemDecoration.VERTICAL)
                     addItemDecoration(itemDecoration)
                 }
             }
-            2 -> { // ViewGroup
-                LinearLayout(this).apply {
+            2 -> { // ViewGroup (FrameLayout)
+                FrameLayout(this).apply {
                     viewData.props.let { props ->
-                        orientation = if (props.orientation == 1) LinearLayout.VERTICAL else LinearLayout.HORIZONTAL
-                        layoutParams = ViewGroup.LayoutParams(
+                        layoutParams = FrameLayout.LayoutParams(
                             convertToPixels(props.width),
                             convertToPixels(props.height)
-                        ).apply { gravity = convertCustomGravity(props.gravity ?: 0)}
-
+                        )
                         setBackgroundColor(Color.parseColor(props.background?.color ?: "#FFFFFF"))
                     }
-                    // Recursively create and add child views
-                    viewData.children?.forEach { child ->
-                        addView(createView(child))
+
+                    var totalHeight = 0
+                    viewData.children?.forEach { childData ->
+                        val childHeight = if (childData.props.height.value == -2) {
+                            val tempView = createView(childData)
+                            tempView.measure(
+                                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+                            )
+                            tempView.measuredHeight
+                        } else {
+                            convertToPixels(childData.props.height)
+                        }
+
+                        totalHeight += childHeight + convertToPixels(Dimension(15, 1))
+                    }
+
+                    var accumulatedHeight = (convertToPixels(viewData.props.height) - totalHeight) / 2
+                    viewData.children?.forEach { childData ->
+                        addView(createView(childData).apply {
+                            val layoutParams = FrameLayout.LayoutParams(
+                                convertToPixels(childData.props.width),
+                                convertToPixels(childData.props.height)
+                            ).apply {
+                                gravity = childData.props.layoutGravity?.let {
+                                    convertCustomGravity(it)
+                                } ?: convertCustomGravity(0)
+                                topMargin = accumulatedHeight
+                            }
+                            this.layoutParams = layoutParams
+                            if (layoutParams.height == ViewGroup.LayoutParams.WRAP_CONTENT) {
+                                measure(
+                                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+                                )
+                                accumulatedHeight += (measuredHeight/1.5f).toInt() + convertToPixels(Dimension(20, 1))
+                            } else {
+                                accumulatedHeight += convertToPixels(childData.props.height) + convertToPixels(Dimension(10, 1))
+                            }
+                        })
                     }
                 }
             }
             3 -> { // CustomTextView
                 CustomTextView(this).apply {
                     viewData.props.let { props ->
-                        Log.d("JsonToViewActivity", "props: ${props.textView?.text ?: "Default Text"}")
                         setText(props.textView?.text ?: "Default Text")
                         textSize = props.textView?.fontSize?.toFloat() ?: 50f
                         setTextColor(Color.parseColor(props.textView?.color ?: "#000000"))
@@ -106,10 +140,7 @@ class JsonToViewActivity : AppCompatActivity() {
                         layoutParams = ViewGroup.LayoutParams(
                             convertToPixels(props.width),
                             convertToPixels(props.height)
-                        ).apply {
-                            layoutGravity = convertCustomGravity(props.layoutGravity ?: 0)
-
-                        }
+                        )
                     }
                 }
             }
@@ -117,14 +148,16 @@ class JsonToViewActivity : AppCompatActivity() {
                 CustomImageView(this).apply {
                     setImageBitmap(loadImageBitmap(viewData.props.imageView?.resource ?: ""))
                     layoutParams = ViewGroup.LayoutParams(
-                        viewData.props.width.let { convertToPixels(it) },
-                        viewData.props.height.let { convertToPixels(it) }
+                        convertToPixels(viewData.props.width),
+                        convertToPixels(viewData.props.height)
                     )
                 }
             }
             else -> throw IllegalArgumentException("Unsupported view type: ${viewData.viewType}")
         }
     }
+
+
 
     private fun convertToPixels(dimen: Dimension): Int {
         return when (dimen.value) {
@@ -140,19 +173,18 @@ class JsonToViewActivity : AppCompatActivity() {
 
     private fun convertCustomGravity(customGravity: Int): Int {
         return when (customGravity) {
-            0 -> Gravity.LEFT
+            0 -> Gravity.START
             1 -> Gravity.TOP
-            2 -> Gravity.RIGHT
+            2 -> Gravity.END
             3 -> Gravity.BOTTOM
             4 -> Gravity.CENTER
-            5 -> Gravity.LEFT and Gravity.CENTER_VERTICAL
-            6 -> Gravity.RIGHT and Gravity.CENTER_VERTICAL
-            7 -> Gravity.CENTER_HORIZONTAL and Gravity.TOP
-            8 -> Gravity.CENTER_HORIZONTAL and Gravity.BOTTOM
+            5 -> Gravity.START or Gravity.CENTER_VERTICAL
+            6 -> Gravity.END or Gravity.CENTER_VERTICAL
+            7 -> Gravity.CENTER_HORIZONTAL or Gravity.TOP
+            8 -> Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM
             else -> Gravity.NO_GRAVITY
         }
     }
-
 
     private fun loadImageBitmap(resource: String): Bitmap {
         val resId = resources.getIdentifier(resource, "drawable", packageName)
