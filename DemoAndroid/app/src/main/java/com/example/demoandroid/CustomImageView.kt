@@ -22,7 +22,7 @@ class CustomImageView(context: Context, attrs: AttributeSet? = null) : View(cont
     private var bitmapHeight = 0
 
     private var layoutGravity = Gravity.CENTER
-
+    private var gravity = Gravity.CENTER
 
     private var layoutWidth = -1
     private var layoutHeight = -2
@@ -46,9 +46,7 @@ class CustomImageView(context: Context, attrs: AttributeSet? = null) : View(cont
             }
         }
         invalidate()
-
     }
-
 
     fun setBitmapFromPath(filePath: String) {
         bitmap = BitmapFactory.decodeFile(filePath)
@@ -63,35 +61,32 @@ class CustomImageView(context: Context, attrs: AttributeSet? = null) : View(cont
         invalidate()
     }
 
+    fun setGravity(gravity: Int) {
+        this.gravity = gravity
+        invalidate()
+    }
+
     fun setLayoutWidth(layoutWidth: Int) {
         this.layoutWidth = layoutWidth
         invalidate()
-
     }
 
     fun setLayoutHeight(layoutHeight: Int) {
         this.layoutHeight = layoutHeight
         invalidate()
-
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
         canvasWidth = when (layoutWidth) {
-            WindowManager.LayoutParams.MATCH_PARENT -> if (parent is ViewGroup) (parent as ViewGroup).width else MeasureSpec.getSize(
-                widthMeasureSpec
-            )
-
+            WindowManager.LayoutParams.MATCH_PARENT -> if (parent is ViewGroup) (parent as ViewGroup).width else MeasureSpec.getSize(widthMeasureSpec)
             WindowManager.LayoutParams.WRAP_CONTENT -> bitmapWidth
             else -> layoutWidth
         }
 
         canvasHeight = when (layoutHeight) {
-            WindowManager.LayoutParams.MATCH_PARENT -> if (parent is ViewGroup) (parent as ViewGroup).height else MeasureSpec.getSize(
-                heightMeasureSpec
-            )
-
+            WindowManager.LayoutParams.MATCH_PARENT -> if (parent is ViewGroup) (parent as ViewGroup).height else MeasureSpec.getSize(heightMeasureSpec)
             WindowManager.LayoutParams.WRAP_CONTENT -> bitmapHeight
             else -> layoutHeight
         }
@@ -107,35 +102,47 @@ class CustomImageView(context: Context, attrs: AttributeSet? = null) : View(cont
             canvas.drawBitmap(it, bitmapX.toFloat(), bitmapY.toFloat(), bitmapPaint)
             canvas.restore()
         }
-
     }
 
     private fun updateCanvasSize() {
         val parent = parent as? ViewGroup
-        if(parent is RecyclerView) {
-            return;
+        if (parent is RecyclerView) {
+            return
         }
 
         val parentWidth = parent?.measuredWidth ?: 0
         val parentHeight = parent?.measuredHeight ?: 0
 
-        bitmapX = when (layoutGravity and Gravity.HORIZONTAL_GRAVITY_MASK) {
+//        bitmapX = when (layoutGravity and Gravity.HORIZONTAL_GRAVITY_MASK) {
+//            Gravity.LEFT -> 0
+//            Gravity.CENTER_HORIZONTAL -> (parentWidth - canvasWidth) / 2
+//            Gravity.RIGHT -> parentWidth - canvasWidth
+//            Gravity.CENTER -> (parentWidth - canvasWidth) / 2
+//            else -> 0
+//        }
+//
+//        bitmapY = when (layoutGravity and Gravity.VERTICAL_GRAVITY_MASK) {
+//            Gravity.TOP -> 0
+//            Gravity.CENTER_VERTICAL -> (parentHeight - canvasHeight) / 2
+//            Gravity.BOTTOM -> parentHeight - canvasHeight
+//            Gravity.CENTER -> (parentHeight - canvasHeight) / 2
+//            else -> 0
+//        }
+
+        bitmapX += when (gravity and Gravity.HORIZONTAL_GRAVITY_MASK) {
             Gravity.LEFT -> 0
-            Gravity.CENTER_HORIZONTAL -> (parentWidth - canvasWidth) / 2
-            Gravity.RIGHT -> parentWidth - canvasWidth
-            Gravity.CENTER -> (parentWidth - canvasWidth) / 2
+            Gravity.CENTER_HORIZONTAL -> (canvasWidth - bitmapWidth) / 2
+            Gravity.RIGHT -> canvasWidth - bitmapWidth
+            Gravity.CENTER -> (canvasWidth - bitmapWidth) / 2
             else -> 0
         }
 
-        bitmapY = when (layoutGravity and Gravity.VERTICAL_GRAVITY_MASK) {
+        bitmapY += when (gravity and Gravity.VERTICAL_GRAVITY_MASK) {
             Gravity.TOP -> 0
-            Gravity.CENTER_VERTICAL -> (parentHeight - canvasHeight) / 2
-            Gravity.BOTTOM -> parentHeight - canvasHeight
-            Gravity.CENTER -> (parentHeight - canvasHeight) / 2
+            Gravity.CENTER_VERTICAL -> (canvasHeight - bitmapHeight) / 2
+            Gravity.BOTTOM -> canvasHeight - bitmapHeight
+            Gravity.CENTER -> (canvasHeight - bitmapHeight) / 2
             else -> 0
         }
-
-
-
     }
 }
