@@ -78,6 +78,15 @@ class JsonToViewActivity : AppCompatActivity() {
 
         private fun handleImageView(context: Context, viewData: ViewData): View {
             val customImageView = CustomImageView(context).apply {
+                val layoutParams = FrameLayout.LayoutParams(
+                    convertToPixels(viewData.props.width),
+                    convertToPixels(viewData.props.height)
+                ).apply {
+                    gravity = viewData.props.layoutGravity?.let {
+                        parseGravity(it)
+                    } ?: parseGravity(emptySet())
+                }
+                this.layoutParams = layoutParams
                 setBitmapFromResource(R.drawable.demo_img)
                 setLayoutWidth(convertToPixels(viewData.props.width))
                 setLayoutHeight(convertToPixels(viewData.props.height))
@@ -90,6 +99,15 @@ class JsonToViewActivity : AppCompatActivity() {
 
         private fun handleTextView(context: Context, viewData: ViewData): View {
             val customTextView = CustomTextView(context, viewData.props.textView?.text ?: "null").apply {
+                val layoutParams = FrameLayout.LayoutParams(
+                    convertToPixels(viewData.props.width),
+                    convertToPixels(viewData.props.height)
+                ).apply {
+                    gravity = viewData.props.layoutGravity?.let {
+                        parseGravity(it)
+                    } ?: parseGravity(emptySet())
+                }
+                this.layoutParams = layoutParams
                 setLayoutWidth(convertToPixels(viewData.props.width))
                 setLayoutHeight(convertToPixels(viewData.props.height))
                 setTextColor(Color.parseColor(viewData.props.textView?.color ?: "#000000"))

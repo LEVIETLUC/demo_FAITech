@@ -23,6 +23,7 @@ class CustomImageView(context: Context, attrs: AttributeSet? = null) : View(cont
 
     private var layoutGravity = Gravity.CENTER
 
+
     private var layoutWidth = -1
     private var layoutHeight = -2
 
@@ -133,6 +134,8 @@ class CustomImageView(context: Context, attrs: AttributeSet? = null) : View(cont
             Gravity.CENTER -> (parentHeight - canvasHeight) / 2
             else -> 0
         }
+
+
 
     }
 }

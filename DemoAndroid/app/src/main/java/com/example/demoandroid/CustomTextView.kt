@@ -39,7 +39,8 @@ class CustomTextView(context: Context,text: String, attrs: AttributeSet? = null)
     private val backgroundPaint = Paint() // Paint để vẽ nền
 
     init {
-        backgroundPaint.color = Color.TRANSPARENT
+        // Khởi tạo màu nền với giá trị mặc định
+        backgroundPaint.color = Color.RED
         backgroundPaint.style = Paint.Style.FILL
         this.text=text
         invalidate()
@@ -88,6 +89,7 @@ class CustomTextView(context: Context,text: String, attrs: AttributeSet? = null)
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
+        // Calculate width based on layoutWidth
         canvasWidth = when (layoutWidth) {
             WindowManager.LayoutParams.MATCH_PARENT -> if (parent is ViewGroup) (parent as ViewGroup).measuredWidth else MeasureSpec.getSize(
                 widthMeasureSpec
@@ -97,6 +99,7 @@ class CustomTextView(context: Context,text: String, attrs: AttributeSet? = null)
             else -> layoutWidth
         }
 
+        // Calculate height based on layoutHeight
         canvasHeight = when (layoutHeight) {
             WindowManager.LayoutParams.MATCH_PARENT -> if (parent is ViewGroup) (parent as ViewGroup).measuredHeight else MeasureSpec.getSize(
                 heightMeasureSpec
@@ -119,7 +122,7 @@ class CustomTextView(context: Context,text: String, attrs: AttributeSet? = null)
     }
 
     override fun onDraw(canvas: Canvas) {
-        Log.e("CustomTextView", "onDraw")
+        Log.e("CustomTextView", "xin loi")
         super.onDraw(canvas)
         canvas.drawRect(
             (this.width - canvasWidth).toFloat(),
@@ -135,6 +138,8 @@ class CustomTextView(context: Context,text: String, attrs: AttributeSet? = null)
             it.draw(canvas)
             canvas.restore()
         }
+
+//        super.onDraw(canvas)
 
     }
 
@@ -163,25 +168,25 @@ class CustomTextView(context: Context,text: String, attrs: AttributeSet? = null)
                 canvasHeight = textHeight
             }
 
-            val parent = parent as? ViewGroup
-            val parentWidth = parent?.measuredWidth ?: 0
-            val parentHeight = parent?.measuredHeight ?: 0
-
-//            textX = when (layoutGravity and Gravity.HORIZONTAL_GRAVITY_MASK) {
-//                Gravity.LEFT -> 0
-//                Gravity.CENTER_HORIZONTAL -> (parentWidth - canvasWidth) / 2
-//                Gravity.RIGHT -> parentWidth - canvasWidth
-//                Gravity.CENTER -> (parentWidth - canvasWidth) / 2
-//                else -> 0
-//            }
+//            val parent = parent as? ViewGroup
+//            val parentWidth = parent?.measuredWidth ?: 0
+//            val parentHeight = parent?.measuredHeight ?: 0
 //
-//            textY = when (layoutGravity and Gravity.VERTICAL_GRAVITY_MASK) {
-//                Gravity.TOP -> 0
-//                Gravity.CENTER_VERTICAL -> (parentHeight - canvasHeight) / 2
-//                Gravity.BOTTOM -> parentHeight - canvasHeight
-//                Gravity.CENTER -> (parentHeight - canvasHeight) / 2
-//                else -> 0
-//            }
+////            textX = when (layoutGravity and Gravity.HORIZONTAL_GRAVITY_MASK) {
+////                Gravity.LEFT -> 0
+////                Gravity.CENTER_HORIZONTAL -> (parentWidth - canvasWidth) / 2
+////                Gravity.RIGHT -> parentWidth - canvasWidth
+////                Gravity.CENTER -> (parentWidth - canvasWidth) / 2
+////                else -> 0
+////            }
+////
+////            textY = when (layoutGravity and Gravity.VERTICAL_GRAVITY_MASK) {
+////                Gravity.TOP -> 0
+////                Gravity.CENTER_VERTICAL -> (parentHeight - canvasHeight) / 2
+////                Gravity.BOTTOM -> parentHeight - canvasHeight
+////                Gravity.CENTER -> (parentHeight - canvasHeight) / 2
+////                else -> 0
+////            }
 
             textX += when (gravity and Gravity.HORIZONTAL_GRAVITY_MASK) {
                 Gravity.LEFT -> 0
