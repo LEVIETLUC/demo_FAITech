@@ -91,13 +91,30 @@ class CustomImageView(context: Context, attrs: AttributeSet? = null) : View(cont
             else -> layoutHeight
         }
 
+        val flag = 10000
+        for(i in 0..flag){
+            Log.e("CustomTextView", "onMeasure")
+        }
+
         setMeasuredDimension(canvasWidth, canvasHeight)
+    }
+
+    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+        super.onLayout(changed, left, top, right, bottom)
+        val flag = 10000
+        for(i in 0..flag){
+            Log.e("CustomTextView", "onMeasure")
+        }
         updateCanvasSize()
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        bitmap?.let {
+        val flag = 10000
+        for(i in 0..flag){
+            Log.e("CustomTextView", "onMeasure")
+        }
+            bitmap?.let {
             canvas.save()
             canvas.drawBitmap(it, bitmapX.toFloat(), bitmapY.toFloat(), bitmapPaint)
             canvas.restore()
@@ -109,25 +126,6 @@ class CustomImageView(context: Context, attrs: AttributeSet? = null) : View(cont
         if (parent is RecyclerView) {
             return
         }
-
-        val parentWidth = parent?.measuredWidth ?: 0
-        val parentHeight = parent?.measuredHeight ?: 0
-
-//        bitmapX = when (layoutGravity and Gravity.HORIZONTAL_GRAVITY_MASK) {
-//            Gravity.LEFT -> 0
-//            Gravity.CENTER_HORIZONTAL -> (parentWidth - canvasWidth) / 2
-//            Gravity.RIGHT -> parentWidth - canvasWidth
-//            Gravity.CENTER -> (parentWidth - canvasWidth) / 2
-//            else -> 0
-//        }
-//
-//        bitmapY = when (layoutGravity and Gravity.VERTICAL_GRAVITY_MASK) {
-//            Gravity.TOP -> 0
-//            Gravity.CENTER_VERTICAL -> (parentHeight - canvasHeight) / 2
-//            Gravity.BOTTOM -> parentHeight - canvasHeight
-//            Gravity.CENTER -> (parentHeight - canvasHeight) / 2
-//            else -> 0
-//        }
 
         bitmapX += when (gravity and Gravity.HORIZONTAL_GRAVITY_MASK) {
             Gravity.LEFT -> 0

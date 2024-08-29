@@ -111,6 +111,11 @@ class CustomTextView(context: Context,text: String, attrs: AttributeSet? = null)
         updateTextSize()
         requestLayout()
 
+        val flag = 10000
+        for(i in 0..flag){
+            Log.e("CustomTextView", "onMeasure")
+        }
+
         setMeasuredDimension(canvasWidth, canvasHeight)
     }
 
@@ -121,9 +126,23 @@ class CustomTextView(context: Context,text: String, attrs: AttributeSet? = null)
         requestLayout()
     }
 
+    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+        super.onLayout(changed, left, top, right, bottom)
+        val flag = 10000
+        for(i in 0..flag){
+            Log.e("CustomTextView", "onLayout")
+        }
+        updateTextSize()
+        invalidate()
+        requestLayout()
+    }
+
     override fun onDraw(canvas: Canvas) {
-        Log.e("CustomTextView", "xin loi")
         super.onDraw(canvas)
+        val flag = 10000
+        for(i in 0..flag){
+            Log.e("CustomTextView", "onDraw")
+        }
         canvas.drawRect(
             (this.width - canvasWidth).toFloat(),
             (this.height - canvasHeight).toFloat(),
@@ -139,7 +158,6 @@ class CustomTextView(context: Context,text: String, attrs: AttributeSet? = null)
             canvas.restore()
         }
 
-//        super.onDraw(canvas)
 
     }
 
@@ -167,26 +185,6 @@ class CustomTextView(context: Context,text: String, attrs: AttributeSet? = null)
             if (layoutHeight == WindowManager.LayoutParams.WRAP_CONTENT) {
                 canvasHeight = textHeight
             }
-
-//            val parent = parent as? ViewGroup
-//            val parentWidth = parent?.measuredWidth ?: 0
-//            val parentHeight = parent?.measuredHeight ?: 0
-//
-////            textX = when (layoutGravity and Gravity.HORIZONTAL_GRAVITY_MASK) {
-////                Gravity.LEFT -> 0
-////                Gravity.CENTER_HORIZONTAL -> (parentWidth - canvasWidth) / 2
-////                Gravity.RIGHT -> parentWidth - canvasWidth
-////                Gravity.CENTER -> (parentWidth - canvasWidth) / 2
-////                else -> 0
-////            }
-////
-////            textY = when (layoutGravity and Gravity.VERTICAL_GRAVITY_MASK) {
-////                Gravity.TOP -> 0
-////                Gravity.CENTER_VERTICAL -> (parentHeight - canvasHeight) / 2
-////                Gravity.BOTTOM -> parentHeight - canvasHeight
-////                Gravity.CENTER -> (parentHeight - canvasHeight) / 2
-////                else -> 0
-////            }
 
             textX += when (gravity and Gravity.HORIZONTAL_GRAVITY_MASK) {
                 Gravity.LEFT -> 0
